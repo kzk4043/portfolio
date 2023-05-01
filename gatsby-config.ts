@@ -9,7 +9,20 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: [],
+  plugins: [
+    'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@/components": "src/components",
+          "@/pages": "src/pages",
+          "@/styles": "src/styles",
+        },
+        extensions: ["js", "jsx", "ts", "tsx", "css", "scss"]
+      }
+    },
+  ],
 }
 
 export default config
