@@ -1,4 +1,4 @@
-import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -15,14 +15,14 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "@/components": "src/components",
-          "@/pages": "src/pages",
-          "@/styles": "src/styles",
+          '@/components': 'src/components',
+          '@/pages': 'src/pages',
+          '@/styles': 'src/styles',
         },
-        extensions: ["js", "jsx", "ts", "tsx", "css", "scss"]
-      }
+        extensions: ['js', 'jsx', 'ts', 'tsx', 'css', 'scss'],
+      },
     },
   ],
-}
+};
 
-export default config
+export default config;

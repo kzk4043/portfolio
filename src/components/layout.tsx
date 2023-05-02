@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
 import '@acab/reset.css';
 
 export type Props = {
@@ -14,27 +14,19 @@ const Layout: React.FC<Props> = ({ children }) => {
       <nav>
         <ul>
           <li>
-            <Link to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/blog">
-              Blog
-            </Link>
+            <Link to="/blog">Blog</Link>
           </li>
         </ul>
       </nav>
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

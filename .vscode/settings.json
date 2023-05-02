@@ -1,0 +1,22 @@
+{
+  // eslintを適応させる
+  "eslint.validate": ["javascript", "typescript"],
+
+  // https://fluffy-invention-1fa9f7c6.pages.github.io/#/pages/getting-started/index?id=vscode-%e3%81%ae%e8%a8%ad%e5%ae%9a
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // tsの設定
+  "[typescript]": {
+    // デフォルトフォーマッターとして Prettier プラグインを利用。全体に適用するとStylelintと競合するため一旦ts/tsxのみ
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // tsxの設定
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true, // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
+  "editor.codeActionsOnSave": {
+    // ファイル保存時のコードアクション設定
+    "source.fixAll.eslint": true, // ESLint プラグインでフォーマットする
+    "source.fixAll.stylelint": true // Stylelint プラグインでフォーマットする
+  }
+}
