@@ -64,7 +64,7 @@ const Layout: React.FC<Props> = ({ children }) => {
             className={clsx(
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
               {
-                'translate-y-2 opacity-100': isMenuOpen,
+                'translate-y-3 opacity-100': isMenuOpen,
               }
             )}
           >
@@ -72,9 +72,9 @@ const Layout: React.FC<Props> = ({ children }) => {
           </div>
           <div
             className={clsx(
-              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[50ms]',
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[100ms]',
               {
-                'translate-y-2 opacity-100 ': isMenuOpen,
+                'translate-y-3 opacity-100 ': isMenuOpen,
               }
             )}
           >
@@ -82,9 +82,9 @@ const Layout: React.FC<Props> = ({ children }) => {
           </div>
           <div
             className={clsx(
-              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-100',
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-[200ms]',
               {
-                'translate-y-2 opacity-100': isMenuOpen,
+                'translate-y-3 opacity-100': isMenuOpen,
               }
             )}
           >
@@ -92,9 +92,9 @@ const Layout: React.FC<Props> = ({ children }) => {
           </div>
           <div
             className={clsx(
-              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-150',
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-[300ms]',
               {
-                'translate-y-2 opacity-100': isMenuOpen,
+                'translate-y-3 opacity-100': isMenuOpen,
               }
             )}
           >
