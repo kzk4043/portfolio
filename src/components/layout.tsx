@@ -18,10 +18,10 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div>
       <header className="container mx-auto flex h-24 items-center justify-between">
-        <div className="flex">
+        <div className="relative flex">
           <div
             className={clsx(
-              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative h-9 w-9 cursor-pointer transition duration-500',
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative h-9 w-9 cursor-pointer transition duration-300',
               {
                 'rotate-180': isMenuOpen,
               }
@@ -30,19 +30,19 @@ const Layout: React.FC<Props> = ({ children }) => {
           >
             <span
               className={clsx(
-                'cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-2 inline-block h-1 w-7 bg-text-black transition duration-300',
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-2 inline-block h-1 w-7 bg-text-black transition duration-200',
                 { 'translate-y-[8px] rotate-[-45deg]': isMenuOpen }
               )}
             ></span>
             <span
               className={clsx(
-                'absolute left-1 top-4 inline-block h-1 w-7 bg-text-black transition duration-300',
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-4 inline-block h-1 w-7 bg-text-black transition duration-200',
                 { 'opacity-0': isMenuOpen }
               )}
             ></span>
             <span
               className={clsx(
-                'absolute left-1 top-6 inline-block h-1 w-7 bg-text-black transition duration-300',
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-6 inline-block h-1 w-7 bg-text-black transition duration-200',
                 { 'translate-y-[-8px] rotate-[45deg]': isMenuOpen }
               )}
             ></span>
@@ -50,8 +50,55 @@ const Layout: React.FC<Props> = ({ children }) => {
           <h1 className="ml-6 flex h-9 items-center">
             <div>
               <Link to="/">kzk4043's PORTFOLIO</Link>
+              <span
+                className={clsx('inline-block', {
+                  inline: isMenuOpen,
+                })}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;はじめまして。こちらはkzk4043のポートフォリオサイトです。
+              </span>
             </div>
           </h1>
+          <div
+            className={clsx(
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
+              {
+                'translate-y-2 opacity-100': isMenuOpen,
+              }
+            )}
+          >
+            <Link to="/">ABOUT</Link>
+          </div>
+          <div
+            className={clsx(
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[50ms]',
+              {
+                'translate-y-2 opacity-100 ': isMenuOpen,
+              }
+            )}
+          >
+            <Link to="/">SKILLS</Link>
+          </div>
+          <div
+            className={clsx(
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-100',
+              {
+                'translate-y-2 opacity-100': isMenuOpen,
+              }
+            )}
+          >
+            <Link to="/">WORKS</Link>
+          </div>
+          <div
+            className={clsx(
+              'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-150',
+              {
+                'translate-y-2 opacity-100': isMenuOpen,
+              }
+            )}
+          >
+            <Link to="/">CONTACT</Link>
+          </div>
         </div>
         <div className="flex">
           <div className="mr-6">
