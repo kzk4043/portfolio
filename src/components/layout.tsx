@@ -48,16 +48,17 @@ const Layout: React.FC<Props> = ({ children }) => {
             ></span>
           </div>
           <h1 className="ml-6 flex h-9 items-center">
-            <div>
-              <Link to="/">kzk4043's PORTFOLIO</Link>
-              <span
-                className={clsx('inline-block', {
-                  inline: isMenuOpen,
-                })}
-              >
-                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;はじめまして。こちらはkzk4043のポートフォリオサイトです。
-              </span>
-            </div>
+            <Link to="/">kzk4043's PORTFOLIO</Link>
+            <span
+              className={clsx(
+                'inline-block w-0 overflow-hidden whitespace-nowrap',
+                {
+                  'animate-typing border-r-2 border-text-black': isMenuOpen,
+                }
+              )}
+            >
+              &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;はじめまして。こちらはkzk4043のポートフォリオサイトです。
+            </span>
           </h1>
           <div
             className={clsx(
