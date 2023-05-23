@@ -72,7 +72,7 @@ const Layout: React.FC<Props> = ({ children }) => {
               }
             )}
           >
-            <Link to="/">ABOUT</Link>
+            <Link to="/about">ABOUT</Link>
           </div>
           <div
             className={clsx(
@@ -82,7 +82,7 @@ const Layout: React.FC<Props> = ({ children }) => {
               }
             )}
           >
-            <Link to="/">SKILLS</Link>
+            <Link to="/skills">SKILLS</Link>
           </div>
           <div
             className={clsx(
@@ -92,7 +92,7 @@ const Layout: React.FC<Props> = ({ children }) => {
               }
             )}
           >
-            <Link to="/">WORKS</Link>
+            <Link to="/works">WORKS</Link>
           </div>
           <div
             className={clsx(
@@ -102,7 +102,7 @@ const Layout: React.FC<Props> = ({ children }) => {
               }
             )}
           >
-            <Link to="/">CONTACT</Link>
+            <Link to="/contact">CONTACT</Link>
           </div>
         </div>
         <div className="flex">

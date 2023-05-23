@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import * as React from 'react';
 import type { HeadFC, PageProps } from 'gatsby';
 import Layout from '@/components/layout';
