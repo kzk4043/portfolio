@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link, Trans, useI18next } from 'gatsby-plugin-react-i18next';
 import { clsx } from 'clsx';
 import '@acab/reset.css';
 
@@ -11,6 +11,7 @@ export type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { originalPath } = useI18next();
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
   };
@@ -57,7 +58,10 @@ const Layout: React.FC<Props> = ({ children }) => {
                 }
               )}
             >
-              &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;はじめまして。こちらはkzk4043のポートフォリオサイトです。
+              &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+              <Trans>
+                はじめまして。こちらはkzk4043のポートフォリオサイトです。
+              </Trans>
             </span>
           </h1>
           <div
@@ -127,10 +131,14 @@ const Layout: React.FC<Props> = ({ children }) => {
           </div>
           <div className="flex">
             <div className="w-10 border-r border-text-black text-center">
-              <Link to="/">JA</Link>
+              <Link to={originalPath} language="ja">
+                JA
+              </Link>
             </div>
             <div className="w-10 text-center">
-              <Link to="/">EN</Link>
+              <Link to={originalPath} language="en">
+                EN
+              </Link>
             </div>
           </div>
         </div>
