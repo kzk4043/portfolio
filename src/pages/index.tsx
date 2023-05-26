@@ -1,16 +1,9 @@
-import { graphql } from 'gatsby';
+import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import * as React from 'react';
-import type { HeadFC, PageProps } from 'gatsby';
 import Layout from '@/components/layout';
 
 const IndexPage: React.FC<PageProps> = () => {
-  return (
-    <Layout>
-      <p>
-        testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttestほげほげほげほげほげほげほげほげほげ
-      </p>
-    </Layout>
-  );
+  return <Layout>animation here</Layout>;
 };
 
 export default IndexPage;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link, Trans, useI18next } from 'gatsby-plugin-react-i18next';
-import { clsx } from 'clsx';
+import React, { useState } from 'react';
 import '@acab/reset.css';
 
 export type Props = {
