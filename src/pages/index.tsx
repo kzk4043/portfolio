@@ -1,9 +1,14 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import * as React from 'react';
 import Layout from '@/components/layout';
+import TopMainAnimation from '@/components/topMainAnimation';
 
 const IndexPage: React.FC<PageProps> = () => {
-  return <Layout>animation here</Layout>;
+  return (
+    <Layout>
+      <TopMainAnimation />
+    </Layout>
+  );
 };
 
 export default IndexPage;
