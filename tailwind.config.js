@@ -33,12 +33,47 @@ module.exports = {
           '0%': { transform: 'rotateZ(0deg)' },
           '100%': { transform: 'rotateZ(360deg)' },
         },
+        'top-oar-graphic': {
+          '0%': { transform: 'rotateY(-60deg)' },
+          '100%': { transform: 'rotateY(-110deg)' },
+        },
+        'top-row': {
+          '0%': { transform: 'rotateZ(20deg)' },
+          '100%': { transform: 'rotateZ(-50deg)' },
+        },
+        'top-depth': {
+          '0%': { transform: 'rotateX(-20deg)' },
+          '100%': { transform: 'rotateX(50deg)' },
+        },
+        'top-wave': {
+          '0%': { transform: 'translateX(0) scale(0)' },
+          '10%': { transform: 'translateX(-10px) scale(1)' },
+          '100%': { transform: 'translateX(-130px) scale(0)' },
+        },
+        'top-hat': {
+          '0%': {
+            transform: 'translateX(-5px) translateZ(30px) rotateY(-20deg)',
+          },
+          '100%': {
+            transform: 'translateX(0) translateZ(30px) rotateY(20deg)',
+          },
+        },
+        'top-ship': {
+          '0%': { transform: 'rotateZ(30deg)' },
+          '100%': { transform: 'rotateZ(-20deg)' },
+        },
       },
       animation: {
         typing:
           'typing steps(20, end) 1s both, blink 1s 5 forwards ease-in-out',
         'top-surface':
           'top-surface 13s ease-in-out infinite alternate, top-rotate-z 20s linear infinite',
+        'top-oar-graphic': 'top-oar-graphic 1s ease-in-out infinite alternate',
+        'top-row': 'top-row 1s ease-in-out infinite alternate',
+        'top-depth': 'top-depth 1s ease-in-out -0.5s infinite alternate',
+        'top-wave': 'top-wave 2s linear infinite',
+        'top-hat': 'top-hat 1s ease-in-out infinite alternate',
+        'top-ship': 'top-ship 30s linear infinite alternate',
       },
     },
   },
