@@ -16,7 +16,7 @@ const TopMainAnimation: React.FC = () => {
         <div className="ship absolute left-[-50px] top-[-15px] drop-shadow-[-30px_40px_0_rgba(0,0,0,0.1)]">
           <div className="rotate animate-top-ship">
             <div className="move">
-              <div className="body">
+              <div className="body relative">
                 <div className="waves absolute">
                   <div className="bodywaves">
                     {[...Array(50)].map((_, i) => (
@@ -24,7 +24,7 @@ const TopMainAnimation: React.FC = () => {
                         className="wave absolute animate-top-wave"
                         style={{
                           top: `${Math.floor(Math.random() * 20) - 3}px`,
-                          left: `${Math.floor(Math.random() * 50) + 1}px`,
+                          left: `${Math.floor(Math.random() * 50) + 10}px`,
                           animationDelay: `-${Math.floor(
                             Math.random() * 4000
                           )}ms`,
@@ -32,7 +32,7 @@ const TopMainAnimation: React.FC = () => {
                         key={i}
                       >
                         <div
-                          className={`graphic animate-top-surface bg-white`}
+                          className={`graphic animate-top-surface-wave bg-white`}
                           style={{
                             width: `${Math.floor(Math.random() * 10) + 8}px`,
                             height: `${Math.floor(Math.random() * 10) + 8}px`,
@@ -55,7 +55,7 @@ const TopMainAnimation: React.FC = () => {
                         key={i}
                       >
                         <div
-                          className="graphic animate-top-surface bg-white"
+                          className="graphic animate-top-surface-wave bg-white"
                           style={{
                             width: `${Math.floor(Math.random() * 5) + 5}px`,
                             height: `${Math.floor(Math.random() * 5) + 5}px`,
@@ -78,7 +78,7 @@ const TopMainAnimation: React.FC = () => {
                         key={i}
                       >
                         <div
-                          className="graphic animate-top-surface bg-white"
+                          className="graphic animate-top-surface-wave bg-white"
                           style={{
                             width: `${Math.floor(Math.random() * 5) + 5}px`,
                             height: `${Math.floor(Math.random() * 5) + 5}px`,
@@ -88,7 +88,7 @@ const TopMainAnimation: React.FC = () => {
                     ))}
                   </div>
                 </div>
-                <div className="base h-[30px] w-[100px] rounded-[45%] bg-top-animation-base before:absolute before:left-[2px] before:top-[2px] before:h-[26px] before:w-[96px] before:rounded-[45%] before:bg-top-animation-sub" />
+                <div className="base relative h-[30px] w-[100px] rounded-[45%] bg-top-animation-base before:absolute before:left-[2px] before:top-[2px] before:h-[26px] before:w-[96px] before:rounded-[45%] before:bg-top-animation-sub" />
                 <div className="board -front absolute right-[20px] top-[5px] h-[20px] w-[10px] rounded-[2px] bg-top-animation-base" />
                 <div className="board -back absolute left-[20px] top-[5px] h-[20px] w-[10px] rounded-[2px] bg-top-animation-base" />
               </div>

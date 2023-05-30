@@ -68,6 +68,8 @@ module.exports = {
           'typing steps(20, end) 1s both, blink 1s 5 forwards ease-in-out',
         'top-surface':
           'top-surface 13s ease-in-out infinite alternate, top-rotate-z 20s linear infinite',
+        'top-surface-wave':
+          'top-surface 2s ease-in-out infinite alternate, top-rotate-z 6s linear infinite',
         'top-oar-graphic': 'top-oar-graphic 1s ease-in-out infinite alternate',
         'top-row': 'top-row 1s ease-in-out infinite alternate',
         'top-depth': 'top-depth 1s ease-in-out -0.5s infinite alternate',
