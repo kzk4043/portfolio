@@ -12,8 +12,6 @@ const HeaderPc: React.FC = () => {
     setIsMenuOpen((current) => !current);
   };
 
-  console.log({ originalPath });
-
   return (
     <div className="mx-auto flex h-24 max-w-7xl items-center justify-between">
       <div className="relative flex">
