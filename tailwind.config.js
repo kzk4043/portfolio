@@ -19,6 +19,10 @@ module.exports = {
           from: { width: '0' },
           to: { width: '50ch' },
         },
+        'typing-en': {
+          from: { width: '0' },
+          to: { width: '40ch' },
+        },
         blink: {
           to: { 'border-color': 'transparent' },
         },
@@ -66,6 +70,8 @@ module.exports = {
       animation: {
         typing:
           'typing steps(20, end) 1s both, blink 1s 5 forwards ease-in-out',
+        'typing-en':
+          'typing-en steps(20, end) 1s both, blink 1s 5 forwards ease-in-out',
         'top-surface':
           'top-surface 13s ease-in-out infinite alternate, top-rotate-z 20s linear infinite',
         'top-surface-wave':

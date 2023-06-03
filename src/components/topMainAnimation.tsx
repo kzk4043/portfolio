@@ -119,7 +119,7 @@ const TopMainAnimation: React.FC = () => {
           </div>
         </div>
       </div>
-      <p className="container absolute bottom-2 mx-auto text-sm">
+      <p className="absolute bottom-2 w-full max-w-7xl text-right text-sm">
         copied from{' '}
         <a href="https://codepen.io/YusukeNakaya/pen/mdVZLmY">Codepen</a>
       </p>
