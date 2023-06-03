@@ -61,7 +61,7 @@ const HeaderSp: React.FC = () => {
       </div>
       <div
         className={clsx(
-          'absolute left-0 top-0 z-10 h-full w-full bg-[rgba(0,0,0,0.7)] transition',
+          'fixed left-0 top-0 z-10 h-full w-full bg-[rgba(0,0,0,0.7)] transition',
           {
             'pointer-events-none opacity-0': !isMenuOpen,
             'opacity-1 pointer-events-auto': isMenuOpen,
@@ -71,11 +71,11 @@ const HeaderSp: React.FC = () => {
       >
         <div
           className={clsx(
-            'absolute right-0 top-0 flex h-full w-[75%] flex-col justify-between bg-white px-3 py-2.5 transition'
-            // {
-            //   'translate-x-0': isMenuOpen,
-            //   'translate-x-3/4': !isMenuOpen,
-            // }
+            'fixed top-0 flex h-full w-[70%] flex-col justify-between bg-white px-3 py-2.5 transition-all',
+            {
+              'right-[-70%]': !isMenuOpen,
+              'right-0': isMenuOpen,
+            }
           )}
           onClick={(e) => e.stopPropagation()}
         >
