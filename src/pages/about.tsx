@@ -1,17 +1,18 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import * as React from 'react';
 import Layout from '@/components/layout';
-import TopMainAnimation from '@/components/topMainAnimation';
 
-const IndexPage: React.FC<PageProps> = () => {
+const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <TopMainAnimation />
+      <div className="flex h-[80vh] w-full items-center justify-center text-3xl">
+        <div>coming soon</div>
+      </div>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default AboutPage;
 
 export const Head: HeadFC = () => <title>Home Page</title>;
 
