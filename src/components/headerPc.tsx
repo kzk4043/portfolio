@@ -14,6 +14,12 @@ const HeaderPc: React.FC = () => {
   const { originalPath, language } = useI18next();
   const { pathname } = useLocation();
   const isTop = pathname === PAGE_URL.TOP;
+  const menuUrlList = [
+    PAGE_URL.ABOUT,
+    PAGE_URL.SKILLS,
+    PAGE_URL.WORKS,
+    PAGE_URL.CONTACT,
+  ];
 
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
@@ -36,19 +42,19 @@ const HeaderPc: React.FC = () => {
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-2 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'translate-y-[8px] rotate-[-45deg]': isMenuOpen }
             )}
-          ></span>
+          />
           <span
             className={clsx(
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-4 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'opacity-0': isMenuOpen }
             )}
-          ></span>
+          />
           <span
             className={clsx(
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-6 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'translate-y-[-8px] rotate-[45deg]': isMenuOpen }
             )}
-          ></span>
+          />
         </div>
         {isTop ? (
           <div>
@@ -71,46 +77,22 @@ const HeaderPc: React.FC = () => {
                 </Trans>
               </span>
             </h1>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
-                {
-                  'translate-y-3 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.ABOUT}>{PAGE_TITLE[PAGE_URL.ABOUT]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[100ms]',
-                {
-                  'translate-y-3 opacity-100 ': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.SKILLS}>{PAGE_TITLE[PAGE_URL.SKILLS]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-[200ms]',
-                {
-                  'translate-y-3 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.WORKS}>{PAGE_TITLE[PAGE_URL.WORKS]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-[300ms]',
-                {
-                  'translate-y-3 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.CONTACT}>{PAGE_TITLE[PAGE_URL.CONTACT]}</Link>
-            </div>
+            {menuUrlList.map((url, index) => {
+              return (
+                <div
+                  className={clsx(
+                    `ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[${
+                      40 + 30 * index
+                    }px] opacity-0 transition delay-[${100 * index}ms]`,
+                    {
+                      'translate-y-3 opacity-100': isMenuOpen,
+                    }
+                  )}
+                >
+                  <Link to={url}>{PAGE_TITLE[url]}</Link>
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="flex items-center">
@@ -120,56 +102,34 @@ const HeaderPc: React.FC = () => {
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                 <span
                   className={clsx(
-                    'ease-[cubic-bezier(0.19, 1, 0.22, 1)] translate-x-5 transition',
+                    'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-0 after:bg-text-black after:transition',
                     {
-                      'translate-x-0 opacity-0': isMenuOpen,
+                      'after:scale-100': isMenuOpen,
                     }
                   )}
                 >
-                  {!isMenuOpen && PAGE_TITLE[pathname]}
+                  {PAGE_TITLE[pathname]}
                 </span>
               </span>
             </h1>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] translate-x-[-20px] opacity-0 transition',
-                {
-                  'translate-x-0 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.ABOUT}>{PAGE_TITLE[PAGE_URL.ABOUT]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[50ms]',
-                {
-                  'translate-x-0 opacity-100 ': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.SKILLS}>{PAGE_TITLE[PAGE_URL.SKILLS]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[100ms]',
-                {
-                  'translate-x-0 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.WORKS}>{PAGE_TITLE[PAGE_URL.WORKS]}</Link>
-            </div>
-            <div
-              className={clsx(
-                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[150ms]',
-                {
-                  'translate-x-0 opacity-100': isMenuOpen,
-                }
-              )}
-            >
-              <Link to={PAGE_URL.CONTACT}>{PAGE_TITLE[PAGE_URL.CONTACT]}</Link>
-            </div>
+            {menuUrlList
+              .filter((url) => url !== pathname)
+              .map((url, index) => {
+                return (
+                  <div
+                    className={clsx(
+                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[${
+                        50 * index
+                      }ms]`,
+                      {
+                        'translate-x-0 opacity-100': isMenuOpen,
+                      }
+                    )}
+                  >
+                    <Link to={url}>{PAGE_TITLE[url]}</Link>
+                  </div>
+                );
+              })}
           </div>
         )}
       </div>
