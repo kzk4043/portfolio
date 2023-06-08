@@ -2,8 +2,11 @@ import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
-import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/url';
+import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/pages';
 
+/**
+ * 現在地のリンクはグレーにする→リンクコンポ作成（内部、外部統合）
+ */
 const HeaderSp: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { originalPath } = useI18next();

@@ -1,12 +1,19 @@
+import { useLocation } from '@reach/router';
 import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link, Trans, useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
-import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/url';
+import { PAGE_URL, EXTERNAL_PAGE_URL, PAGE_TITLE } from '@/constants/pages';
 
+/**
+ * やることリスト
+ * ・ヘッダ固定
+ */
 const HeaderPc: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { originalPath, language } = useI18next();
+  const { pathname } = useLocation();
+  const isTop = pathname === PAGE_URL.TOP;
 
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
@@ -43,65 +50,128 @@ const HeaderPc: React.FC = () => {
             )}
           ></span>
         </div>
-        <h1 className="ml-6 flex h-9 items-center">
-          <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
-          <span
-            className={clsx(
-              'sp:hidden inline-block w-0 overflow-hidden whitespace-nowrap',
-              {
-                'animate-typing border-r-2 border-text-black':
-                  isMenuOpen && language === 'ja',
-                'animate-typing-en border-r-2 border-text-black':
-                  isMenuOpen && language === 'en',
-              }
-            )}
-          >
-            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-            <Trans>
-              はじめまして。こちらはkzk4043のポートフォリオサイトです。
-            </Trans>
-          </span>
-        </h1>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.ABOUT}>ABOUT</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[100ms]',
-            {
-              'translate-y-3 opacity-100 ': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.SKILLS}>SKILLS</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-[200ms]',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.WORKS}>WORKS</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-[300ms]',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.CONTACT}>CONTACT</Link>
-        </div>
+        {isTop ? (
+          <div>
+            <h1 className="ml-6 flex h-9 items-center">
+              <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
+              <span
+                className={clsx(
+                  'sp:hidden inline-block w-0 overflow-hidden whitespace-nowrap',
+                  {
+                    'animate-typing border-r-2 border-text-black':
+                      isMenuOpen && language === 'ja',
+                    'animate-typing-en border-r-2 border-text-black':
+                      isMenuOpen && language === 'en',
+                  }
+                )}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <Trans>
+                  はじめまして。こちらはkzk4043のポートフォリオサイトです。
+                </Trans>
+              </span>
+            </h1>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
+                {
+                  'translate-y-3 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.ABOUT}>{PAGE_TITLE[PAGE_URL.ABOUT]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[100ms]',
+                {
+                  'translate-y-3 opacity-100 ': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.SKILLS}>{PAGE_TITLE[PAGE_URL.SKILLS]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-[200ms]',
+                {
+                  'translate-y-3 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.WORKS}>{PAGE_TITLE[PAGE_URL.WORKS]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-[300ms]',
+                {
+                  'translate-y-3 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.CONTACT}>{PAGE_TITLE[PAGE_URL.CONTACT]}</Link>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <h1 className="ml-6 flex items-center">
+              <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
+              <span>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <span
+                  className={clsx(
+                    'ease-[cubic-bezier(0.19, 1, 0.22, 1)] translate-x-5 transition',
+                    {
+                      'translate-x-0 opacity-0': isMenuOpen,
+                    }
+                  )}
+                >
+                  {!isMenuOpen && PAGE_TITLE[pathname]}
+                </span>
+              </span>
+            </h1>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] translate-x-[-20px] opacity-0 transition',
+                {
+                  'translate-x-0 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.ABOUT}>{PAGE_TITLE[PAGE_URL.ABOUT]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[50ms]',
+                {
+                  'translate-x-0 opacity-100 ': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.SKILLS}>{PAGE_TITLE[PAGE_URL.SKILLS]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[100ms]',
+                {
+                  'translate-x-0 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.WORKS}>{PAGE_TITLE[PAGE_URL.WORKS]}</Link>
+            </div>
+            <div
+              className={clsx(
+                'ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[150ms]',
+                {
+                  'translate-x-0 opacity-100': isMenuOpen,
+                }
+              )}
+            >
+              <Link to={PAGE_URL.CONTACT}>{PAGE_TITLE[PAGE_URL.CONTACT]}</Link>
+            </div>
+          </div>
+        )}
       </div>
       <div className="flex">
         <div className="mr-6">
