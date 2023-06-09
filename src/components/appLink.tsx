@@ -1,7 +1,5 @@
-import { clsx } from 'clsx';
 import { Link, useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState, useEffect } from 'react';
-import { PAGE_URL } from '@/constants/pages';
 
 export type Props = {
   /** to */
