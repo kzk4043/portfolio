@@ -1,9 +1,13 @@
 import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Link, useI18next } from 'gatsby-plugin-react-i18next';
+import { useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
-import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/url';
+import AppLink from './appLink';
+import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/pages';
 
+/**
+ * 現在地のリンクはグレーにする→リンクコンポ作成（内部、外部統合）
+ */
 const HeaderSp: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { originalPath } = useI18next();
@@ -15,7 +19,7 @@ const HeaderSp: React.FC = () => {
   return (
     <>
       <div className="mx-auto flex h-14 items-center justify-between bg-transparent px-3">
-        <Link to={PAGE_URL.TOP}>
+        <AppLink to={PAGE_URL.TOP} withoutUnderline>
           <div className="flex items-center">
             <StaticImage
               alt="horse icon"
@@ -27,7 +31,7 @@ const HeaderSp: React.FC = () => {
               <p className="text-[10px]">PORTFOLIO</p>
             </div>
           </div>
-        </Link>
+        </AppLink>
         <div className="relative flex">
           <div
             className={clsx(
@@ -111,10 +115,18 @@ const HeaderSp: React.FC = () => {
           </div>
           <div className="px-10">
             <div className="flex flex-col border-b border-text-black pb-4 text-xl leading-10">
-              <Link to={PAGE_URL.ABOUT}>ABOUT</Link>
-              <Link to={PAGE_URL.SKILLS}>SKILLS</Link>
-              <Link to={PAGE_URL.WORKS}>WORKS</Link>
-              <Link to={PAGE_URL.CONTACT}>CONTACT</Link>
+              <AppLink to={PAGE_URL.ABOUT} withoutUnderline>
+                ABOUT
+              </AppLink>
+              <AppLink to={PAGE_URL.SKILLS} withoutUnderline>
+                SKILLS
+              </AppLink>
+              <AppLink to={PAGE_URL.WORKS} withoutUnderline>
+                WORKS
+              </AppLink>
+              <AppLink to={PAGE_URL.CONTACT} withoutUnderline>
+                CONTACT
+              </AppLink>
             </div>
             <div className="flex flex-col pt-4 text-xl leading-10">
               <a href={EXTERNAL_PAGE_URL.ZENN}>
@@ -145,14 +157,14 @@ const HeaderSp: React.FC = () => {
           </div>
           <div className="mx-auto flex text-sm">
             <div className="w-10 border-r border-text-black text-center">
-              <Link to={originalPath} language="ja">
+              <AppLink to={originalPath} language="ja">
                 JA
-              </Link>
+              </AppLink>
             </div>
             <div className="w-10 text-center">
-              <Link to={originalPath} language="en">
+              <AppLink to={originalPath} language="en">
                 EN
-              </Link>
+              </AppLink>
             </div>
           </div>
         </div>

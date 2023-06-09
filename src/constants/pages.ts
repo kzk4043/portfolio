@@ -7,13 +7,13 @@ export const PAGE_URL = {
   /** トップ */
   TOP: '/',
   /** about */
-  ABOUT: '/about',
+  ABOUT: '/about/',
   /** skills */
-  SKILLS: '/skills',
+  SKILLS: '/skills/',
   /** works */
-  WORKS: '/works',
+  WORKS: '/works/',
   /** contact */
-  CONTACT: '/contact',
+  CONTACT: '/contact/',
 }
 
 /** サイト外のURL */
@@ -24,4 +24,18 @@ export const EXTERNAL_PAGE_URL = {
   GITHUB: 'https://github.com/kzk4043',
   /** Codepen */
   CODEPEN: 'https://codepen.io/kzk4043',
+}
+
+/** ページタイトル */
+export const PAGE_TITLE = {
+  /** トップ */
+  [PAGE_URL.TOP]: 'TOP',
+  /** about */
+  [PAGE_URL.ABOUT]: 'ABOUT',
+  /** skills */
+  [PAGE_URL.SKILLS]: 'SKILLS',
+  /** works */
+  [PAGE_URL.WORKS]: 'WORKS',
+  /** contact */
+  [PAGE_URL.CONTACT]: 'CONTACT',
 }

@@ -1,12 +1,27 @@
 import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Link, Trans, useI18next } from 'gatsby-plugin-react-i18next';
+import { Trans, useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
-import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/url';
+import AppLink from './appLink';
+import { PAGE_URL, EXTERNAL_PAGE_URL, PAGE_TITLE } from '@/constants/pages';
 
+/**
+ * やることリスト
+ * ・ヘッダ固定
+ */
 const HeaderPc: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { originalPath, language } = useI18next();
+  const isTop = originalPath === PAGE_URL.TOP;
+  const menuUrlList = [
+    PAGE_URL.ABOUT,
+    PAGE_URL.SKILLS,
+    PAGE_URL.WORKS,
+    PAGE_URL.CONTACT,
+  ];
+  /** トップのメニュ関連Tailwindクラス */
+  const topMenuTop = ['top-[40px]', 'top-[70px]', 'top-[100px]', 'top-[130px]'];
+  const topMenuDelay = ['', 'delay-[100ms]', 'delay-[200ms]', 'delay-[300ms]'];
 
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
@@ -29,79 +44,101 @@ const HeaderPc: React.FC = () => {
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-2 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'translate-y-[8px] rotate-[-45deg]': isMenuOpen }
             )}
-          ></span>
+          />
           <span
             className={clsx(
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-4 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'opacity-0': isMenuOpen }
             )}
-          ></span>
+          />
           <span
             className={clsx(
               'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-6 inline-block h-1 w-7 bg-text-black transition duration-200',
               { 'translate-y-[-8px] rotate-[45deg]': isMenuOpen }
             )}
-          ></span>
+          />
         </div>
-        <h1 className="ml-6 flex h-9 items-center">
-          <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
-          <span
-            className={clsx(
-              'sp:hidden inline-block w-0 overflow-hidden whitespace-nowrap',
-              {
-                'animate-typing border-r-2 border-text-black':
-                  isMenuOpen && language === 'ja',
-                'animate-typing-en border-r-2 border-text-black':
-                  isMenuOpen && language === 'en',
-              }
-            )}
-          >
-            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-            <Trans>
-              はじめまして。こちらはkzk4043のポートフォリオサイトです。
-            </Trans>
-          </span>
-        </h1>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[40px] opacity-0 transition',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.ABOUT}>ABOUT</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[70px] opacity-0 transition delay-[100ms]',
-            {
-              'translate-y-3 opacity-100 ': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.SKILLS}>SKILLS</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[100px] opacity-0 transition delay-[200ms]',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.WORKS}>WORKS</Link>
-        </div>
-        <div
-          className={clsx(
-            'ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[130px] opacity-0 transition delay-[300ms]',
-            {
-              'translate-y-3 opacity-100': isMenuOpen,
-            }
-          )}
-        >
-          <Link to={PAGE_URL.CONTACT}>CONTACT</Link>
-        </div>
+        {isTop ? (
+          <div>
+            <h1 className="ml-6 flex h-9 items-center">
+              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+                kzk4043's PORTFOLIO
+              </AppLink>
+              <span
+                className={clsx(
+                  'sp:hidden inline-block w-0 overflow-hidden whitespace-nowrap',
+                  {
+                    'animate-typing border-r-2 border-text-black':
+                      isMenuOpen && language === 'ja',
+                    'animate-typing-en border-r-2 border-text-black':
+                      isMenuOpen && language === 'en',
+                  }
+                )}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <Trans>
+                  はじめまして。こちらはkzk4043のポートフォリオサイトです。
+                </Trans>
+              </span>
+            </h1>
+            {menuUrlList.map((url, index) => {
+              return (
+                <div
+                  className={clsx(
+                    `ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 ${topMenuTop[index]} opacity-0 transition ${topMenuDelay[index]}`,
+                    {
+                      'translate-y-3 opacity-100': isMenuOpen,
+                    }
+                  )}
+                  key={url}
+                >
+                  <AppLink to={url}>{PAGE_TITLE[url]}</AppLink>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <h1 className="ml-6 flex items-center">
+              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+                kzk4043's PORTFOLIO
+              </AppLink>
+              <span>
+                &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                <span
+                  className={clsx(
+                    'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-0 after:bg-text-black after:transition',
+                    {
+                      'after:scale-100': isMenuOpen,
+                    }
+                  )}
+                >
+                  {PAGE_TITLE[originalPath]}
+                </span>
+              </span>
+            </h1>
+            {menuUrlList
+              .filter((url) => url !== originalPath)
+              .map((url, index) => {
+                return (
+                  <div
+                    className={clsx(
+                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 transition delay-[${
+                        50 * index
+                      }ms]`,
+                      {
+                        'translate-x-[-20px] opacity-0': !isMenuOpen,
+                        'translate-x-0 opacity-100': isMenuOpen,
+                      }
+                    )}
+                    key={url}
+                  >
+                    <AppLink to={url}>{PAGE_TITLE[url]}</AppLink>
+                  </div>
+                );
+              })}
+          </div>
+        )}
       </div>
       <div className="flex">
         <div className="mr-6">
@@ -129,14 +166,14 @@ const HeaderPc: React.FC = () => {
         </div>
         <div className="flex">
           <div className="w-10 border-r border-text-black text-center">
-            <Link to={originalPath} language="ja">
+            <AppLink to={originalPath} language="ja">
               JA
-            </Link>
+            </AppLink>
           </div>
           <div className="w-10 text-center">
-            <Link to={originalPath} language="en">
+            <AppLink to={originalPath} language="en">
               EN
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>

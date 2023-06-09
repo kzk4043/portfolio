@@ -20,7 +20,7 @@ const Layout: React.FC<Props> = ({ children }) => {
           size[0] > 1000 ? <HeaderPc /> : <HeaderSp />
         }
       </header>
-      <main className="container mx-auto">{children}</main>
+      <main className="mx-auto max-w-7xl">{children}</main>
     </div>
   );
 };
