@@ -1,8 +1,9 @@
 import { useLocation } from '@reach/router';
 import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Link, Trans, useI18next } from 'gatsby-plugin-react-i18next';
+import { Trans, useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
+import AppLink from './appLink';
 import { PAGE_URL, EXTERNAL_PAGE_URL, PAGE_TITLE } from '@/constants/pages';
 
 /**
@@ -20,6 +21,9 @@ const HeaderPc: React.FC = () => {
     PAGE_URL.WORKS,
     PAGE_URL.CONTACT,
   ];
+  /** トップのメニュ関連Tailwindクラス */
+  const topMenuTop = ['top-[40px]', 'top-[70px]', 'top-[100px]', 'top-[130px]'];
+  const topMenuDelay = ['', 'delay-[100ms]', 'delay-[200ms]', 'delay-[300ms]'];
 
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
@@ -59,7 +63,9 @@ const HeaderPc: React.FC = () => {
         {isTop ? (
           <div>
             <h1 className="ml-6 flex h-9 items-center">
-              <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
+              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+                kzk4043's PORTFOLIO
+              </AppLink>
               <span
                 className={clsx(
                   'sp:hidden inline-block w-0 overflow-hidden whitespace-nowrap',
@@ -81,15 +87,14 @@ const HeaderPc: React.FC = () => {
               return (
                 <div
                   className={clsx(
-                    `ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 top-[${
-                      40 + 30 * index
-                    }px] opacity-0 transition delay-[${100 * index}ms]`,
+                    `ease-[cubic-bezier(0.19, 1, 0.22, 1)] absolute left-1 ${topMenuTop[index]} opacity-0 transition ${topMenuDelay[index]}`,
                     {
                       'translate-y-3 opacity-100': isMenuOpen,
                     }
                   )}
+                  key={url}
                 >
-                  <Link to={url}>{PAGE_TITLE[url]}</Link>
+                  <AppLink to={url}>{PAGE_TITLE[url]}</AppLink>
                 </div>
               );
             })}
@@ -97,7 +102,9 @@ const HeaderPc: React.FC = () => {
         ) : (
           <div className="flex items-center">
             <h1 className="ml-6 flex items-center">
-              <Link to={PAGE_URL.TOP}>kzk4043's PORTFOLIO</Link>
+              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+                kzk4043's PORTFOLIO
+              </AppLink>
               <span>
                 &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                 <span
@@ -118,15 +125,17 @@ const HeaderPc: React.FC = () => {
                 return (
                   <div
                     className={clsx(
-                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 translate-x-[-20px] opacity-0 transition delay-[${
+                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 transition delay-[${
                         50 * index
                       }ms]`,
                       {
+                        'translate-x-[-20px] opacity-0': !isMenuOpen,
                         'translate-x-0 opacity-100': isMenuOpen,
                       }
                     )}
+                    key={url}
                   >
-                    <Link to={url}>{PAGE_TITLE[url]}</Link>
+                    <AppLink to={url}>{PAGE_TITLE[url]}</AppLink>
                   </div>
                 );
               })}
@@ -159,14 +168,14 @@ const HeaderPc: React.FC = () => {
         </div>
         <div className="flex">
           <div className="w-10 border-r border-text-black text-center">
-            <Link to={originalPath} language="ja">
+            <AppLink to={originalPath} language="ja">
               JA
-            </Link>
+            </AppLink>
           </div>
           <div className="w-10 text-center">
-            <Link to={originalPath} language="en">
+            <AppLink to={originalPath} language="en">
               EN
-            </Link>
+            </AppLink>
           </div>
         </div>
       </div>
