@@ -1,4 +1,3 @@
-import { useLocation } from '@reach/router';
 import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Trans, useI18next } from 'gatsby-plugin-react-i18next';
@@ -13,8 +12,7 @@ import { PAGE_URL, EXTERNAL_PAGE_URL, PAGE_TITLE } from '@/constants/pages';
 const HeaderPc: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { originalPath, language } = useI18next();
-  const { pathname } = useLocation();
-  const isTop = pathname === PAGE_URL.TOP;
+  const isTop = originalPath === PAGE_URL.TOP;
   const menuUrlList = [
     PAGE_URL.ABOUT,
     PAGE_URL.SKILLS,
@@ -115,12 +113,12 @@ const HeaderPc: React.FC = () => {
                     }
                   )}
                 >
-                  {PAGE_TITLE[pathname]}
+                  {PAGE_TITLE[originalPath]}
                 </span>
               </span>
             </h1>
             {menuUrlList
-              .filter((url) => url !== pathname)
+              .filter((url) => url !== originalPath)
               .map((url, index) => {
                 return (
                   <div

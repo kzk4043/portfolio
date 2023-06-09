@@ -21,9 +21,10 @@ const AppLink: React.FC<Props> = ({
   /** location.originを取得 */
   const [currentOrigin, setCurrentOrigin] = useState('');
   /** リンク先が表示画面と同じか */
-  const { path, language: pathLanguage } = useI18next();
+  const { originalPath, language: pathLanguage } = useI18next();
   const isSameLinkUrl =
-    (path === to && !language) || (path === to && pathLanguage === language);
+    (originalPath === to && !language) ||
+    (originalPath === to && pathLanguage === language);
   /** 外部リンクか */
   const regexp = new RegExp(`^(?=https?://)(?!${currentOrigin})`);
   const isExternalUrl = regexp.test(to || '');
