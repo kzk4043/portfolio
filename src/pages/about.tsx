@@ -1,9 +1,12 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
 import Layout from '@/components/layout';
 
 const AboutPage: React.FC<PageProps> = () => {
+  const { t } = useTranslation();
+  const { language } = useI18next();
   const currentAge =
     new Date().getFullYear() - new Date(1990, 5, 1).getFullYear();
 
@@ -15,31 +18,65 @@ const AboutPage: React.FC<PageProps> = () => {
             <h2 className="font-bold">CAREER</h2>
             <div className="mt-5 flex">
               <ul className="w-14 shrink-0">
-                <li>1990年</li>
-                <li>2009年</li>
-                <li>2015年</li>
-                <li>2016年</li>
+                <li>
+                  <Trans>1990年</Trans>
+                </li>
+                <li>
+                  <Trans>2009年</Trans>
+                </li>
+                <li>
+                  <Trans>2015年</Trans>
+                </li>
+                <li>
+                  <Trans>2016年</Trans>
+                </li>
               </ul>
               <ul className="ml-8">
-                <li>誕生（現在{currentAge}才）</li>
-                <li>大阪大学 電子情報工学科入学</li>
-                <li>世界一周</li>
-                <li>大阪大学大学院 電気電子情報工学専攻卒業</li>
+                <li>{t('birth', { currentAge })}</li>
+                <li>
+                  <Trans>大阪大学 電子情報工学科入学</Trans>
+                </li>
+                <li>
+                  <Trans>世界一周</Trans>
+                </li>
+                <li>
+                  <Trans>大阪大学大学院 電気電子情報工学専攻卒業</Trans>
+                </li>
               </ul>
             </div>
             <div className="mt-5 flex">
               <ul className="w-14 shrink-0">
-                <li>2016年</li>
-                <li>2019年</li>
-                <li>2019年</li>
-                <li>2023年</li>
+                <li>
+                  <Trans>2016年</Trans>
+                </li>
+                <li>
+                  <Trans>2019年</Trans>
+                </li>
+                <li>
+                  <Trans>2019年</Trans>
+                </li>
+                <li>
+                  <Trans>2023年</Trans>
+                </li>
               </ul>
               <ul className="ml-8">
-                <li>富士通株式会社 新卒入社</li>
-                <li>転職期間を利用してインドへ</li>
-                <li>チームラボ株式会社 中途入社</li>
-                <li>1年間の育休を取得</li>
-                <li className="mt-5">現在に至る</li>
+                <li>
+                  <Trans>富士通株式会社 新卒入社</Trans>
+                </li>
+                <li>
+                  <Trans>転職期間を利用してインドへ</Trans>
+                </li>
+                <li>
+                  <Trans>チームラボ株式会社 中途入社</Trans>
+                </li>
+                <li>
+                  <Trans>1年間の育休を取得</Trans>
+                </li>
+                {language === 'ja' && (
+                  <li className="mt-5">
+                    <Trans>現在に至る</Trans>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -47,11 +84,24 @@ const AboutPage: React.FC<PageProps> = () => {
             <h2 className="font-bold">CERTIFICATION</h2>
             <div className="mt-5 flex">
               <ul className="list-inside list-disc">
-                <li>基本/応用情報技術者</li>
-                <li>AWSクラウドプラクティショナー</li>
-                <li>FP3級/簿記3級</li>
-                <li>RYT200</li>
-                <li>アロマテラピー検定1級</li>
+                <li>
+                  <Trans>基本/応用情報技術者</Trans>
+                </li>
+                <li>
+                  <Trans>AWSクラウドプラクティショナー</Trans>
+                </li>
+                <li>
+                  <Trans>FP3級/簿記3級</Trans>
+                </li>
+                <li>
+                  <Trans>TOEIC 895点</Trans>
+                </li>
+                <li>
+                  <Trans>RYT200</Trans>
+                </li>
+                <li>
+                  <Trans>アロマテラピー検定1級</Trans>
+                </li>
               </ul>
             </div>
           </div>
@@ -59,10 +109,18 @@ const AboutPage: React.FC<PageProps> = () => {
             <h2 className="font-bold">HOBBY</h2>
             <div className="mt-5 flex">
               <ul className="list-inside list-disc">
-                <li>漫画/アニメ</li>
-                <li>野球（投手）</li>
-                <li>筋トレ（自重）</li>
-                <li>ボルダリング</li>
+                <li>
+                  <Trans>漫画/アニメ</Trans>
+                </li>
+                <li>
+                  <Trans>野球（投手）</Trans>
+                </li>
+                <li>
+                  <Trans>筋トレ（自重）</Trans>
+                </li>
+                <li>
+                  <Trans>ボルダリング</Trans>
+                </li>
               </ul>
             </div>
           </div>
