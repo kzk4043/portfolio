@@ -22,6 +22,13 @@ const HeaderPc: React.FC = () => {
   /** トップのメニュ関連Tailwindクラス */
   const topMenuTop = ['top-[40px]', 'top-[70px]', 'top-[100px]', 'top-[130px]'];
   const topMenuDelay = ['', 'delay-[100ms]', 'delay-[200ms]', 'delay-[300ms]'];
+  /** トップ以外のメニュ関連Tailwindクラス */
+  const othersMenuDelay = [
+    '',
+    'delay-[50ms]',
+    'delay-[100ms]',
+    'delay-[150ms]',
+  ];
 
   const handleClick = () => {
     setIsMenuOpen((current) => !current);
@@ -123,9 +130,7 @@ const HeaderPc: React.FC = () => {
                 return (
                   <div
                     className={clsx(
-                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 transition delay-[${
-                        50 * index
-                      }ms]`,
+                      `ease-[cubic-bezier(0.19, 1, 0.22, 1)] ml-5 transition ${othersMenuDelay[index]}`,
                       {
                         'translate-x-[-20px] opacity-0': !isMenuOpen,
                         'translate-x-0 opacity-100': isMenuOpen,
