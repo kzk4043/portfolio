@@ -1,0 +1,22 @@
+{
+  "プロジェクトマネジメント": "Project Management",
+  "デザイン": "Design",
+  "フロントエンド": "Frontend",
+  "バックエンド": "Backend",
+  "インフラ": "Infrastructure",
+  "その他": "Others",
+  "未経験": "No experience",
+  "個人開発、研修": "Training",
+  "駆け出し": "Beginner",
+  "中堅": "Mid level",
+  "プロジェクトリーダ": "Project leader",
+  "テックリード": "Technical lead",
+  "アジャイル/ウォーターフォール": "Agile/Waterfall",
+  "富士通時代はプロジェクトマネージャとして、SaaSのカスタマイズプロジェクト、およびそのシステムの保守部隊の構築を担当していました。開発/保守はインドのチームと、アジャイルでの開発でした。チームラボではウォーターフォールでの開発がメインとなります。": "During my time at Fujitsu, I was a project manager responsible for a SaaS customization project and building a maintenance unit for that system. The development/maintenance was with a team in India and in Agile. At TeamLab, development is mainly done by waterfall.",
+  "実務経験はありませんが、このポートフォリオサイトのデザインをはじめ勉強中です。": "I have no practical experience, but I am learning, starting with the design of this portfolio site.",
+  "チームラボではフロントエンド班に所属しており、私のメインスキルになります。Next.js/Nuxt.jsでの構築経験があり、中規模プロジェクトのフロントエンドリーダも経験させていただきました。": "I am a member of the front-end team at TeamLab, which is my main skill set. I have experience building in Next.js/Nuxt.js and have also been a front-end leader for a medium-sized project.",
+  "backend": "I have no work experience, but I am studying at <li>Praha Challenge</l>, a boot camp for intermediate engineers.",
+  "infrastructure": "I have no work experience, but I am studying at <li>Praha Challenge</l>, a boot camp for intermediate engineers. AWS Cloud Practitioner Certified.",
+  "採用/Git/Github/Gitlab/Slack/GAS": "Recruiting/Git/Github/Gitlab/Slack/GAS",
+  "チームラボへの入社後採用にも関わらせていただいており、書類選考/面接から、フロントエンド班における採用ルールの整備なども担当させていただきました。業務効率化のため簡単なSlackアプリの導入なども行っています。": "After joining TeamLab, I was also involved in the hiring process, from document screening and interviews to the development of hiring rules for the front-end team. I also introduced a simple Slack application to improve work efficiency."
+}

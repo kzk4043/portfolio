@@ -2,7 +2,7 @@ import { clsx } from 'clsx';
 import { StaticImage } from 'gatsby-plugin-image';
 import { useI18next } from 'gatsby-plugin-react-i18next';
 import React, { useState } from 'react';
-import AppLink from './appLink';
+import AppLink from '@/components/appLink';
 import { PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/pages';
 
 /**
