@@ -31,7 +31,7 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
   return (
     <div>
       <h2>{title}</h2>
-      <hr></hr>
+      <hr />
       <div className="mt-5 flex flex-wrap gap-5">
         {cardList.map(
           (

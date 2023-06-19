@@ -50,7 +50,7 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="lg:px-5 lg:pb-5">
+      <div className="lg:px-5">
         <div className="mt-14">
           <WorkCardList title="個人開発" cardList={personalDevCardList} />
         </div>

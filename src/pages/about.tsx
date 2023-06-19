@@ -13,7 +13,7 @@ const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="flex lg:flex-col-reverse">
-        <div className="mt-14 lg:px-5 lg:pb-5">
+        <div className="mt-14 lg:px-5">
           <div>
             <h2 className="font-bold">CAREER</h2>
             <div className="mt-5 flex">

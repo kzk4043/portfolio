@@ -1,7 +1,9 @@
+import { useI18next } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import '@acab/reset.css';
 import HeaderPc from '@/components/headerPc';
 import HeaderSp from '@/components/headerSp';
+import { PAGE_URL } from '@/constants/pages';
 import { useWindowSize } from '@/hooks/useWindowSize';
 
 export type Props = {
@@ -11,6 +13,9 @@ export type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   const size = useWindowSize();
+  const thisYear = new Date().getFullYear();
+  const { originalPath } = useI18next();
+  const isTop = originalPath === PAGE_URL.TOP;
 
   return (
     <div>
@@ -21,6 +26,12 @@ const Layout: React.FC<Props> = ({ children }) => {
         }
       </header>
       <main className="mx-auto max-w-7xl">{children}</main>
+      {isTop || (
+        <footer className="mt-36 h-28 text-center text-sm lg:mt-20 lg:px-5">
+          <hr className="mx-auto max-w-7xl" />
+          <p className="mt-10">© {thisYear} kzk4043. All rights reserved.</p>
+        </footer>
+      )}
     </div>
   );
 };
