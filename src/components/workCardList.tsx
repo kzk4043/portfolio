@@ -16,7 +16,7 @@ export type Props = {
     /** 使用技術 */
     technology?: string;
     /** カード画像 */
-    image: IGatsbyImageData;
+    image?: IGatsbyImageData;
     /** カードリンク */
     linkList?: Array<{
       /** カードリンクタイトル */
@@ -39,13 +39,15 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
             index
           ) => (
             <div key={title} className="relative w-[23%] lg:mb-10 lg:w-full">
-              <GatsbyImage
-                alt={title}
-                image={image}
-                className="aspect-[243/131] w-full"
-                objectFit="contain"
-              />
-              <div className="absolute left-0 top-0 aspect-[243/131] w-full rounded-t-lg bg-text-black opacity-10 mix-blend-multiply"></div>
+              {image && (
+                <GatsbyImage
+                  alt={title}
+                  image={image}
+                  className="aspect-[243/131] w-full"
+                  objectFit="contain"
+                />
+              )}
+              <div className="absolute left-0 top-0 aspect-[243/131] w-full rounded-t-lg bg-[#125E8A] opacity-10 mix-blend-multiply"></div>
               <p className="mt-2 font-bold">
                 <AppLink to={url}>{title}</AppLink>
               </p>

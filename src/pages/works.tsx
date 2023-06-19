@@ -4,18 +4,14 @@ import Layout from '@/components/layout';
 import WorkCardList from '@/components/workCardList';
 import { EXTERNAL_PAGE_URL } from '@/constants/pages';
 
-/**
- * GraphQLクエリの書き方調べる
- * まずはfileでpublicPathを試す
- */
-const WorksPage: React.FC<PageProps> = ({ data }) => {
+const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
   const personalDevCardList = [
     {
       title: 'ポートフォリオ',
       url: EXTERNAL_PAGE_URL.PORTFOLIO,
       description: 'このサイトです。',
       technology: 'Gatsby.js/TypeScript/Tailwind CSS',
-      image: data.horse.childImageSharp.gatsbyImageData,
+      image: data.horse?.childImageSharp?.gatsbyImageData,
       linkList: [
         {
           title: 'github',
@@ -30,25 +26,25 @@ const WorksPage: React.FC<PageProps> = ({ data }) => {
       url: EXTERNAL_PAGE_URL.ZENN,
       description:
         '不定期で技術記事を書いています。主にフロントエンドについて書いています。',
-      image: data.zenn.childImageSharp.gatsbyImageData,
+      image: data.zenn?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Github',
       url: EXTERNAL_PAGE_URL.GITHUB,
       description: '私のリポジトリです。',
-      image: data.github.childImageSharp.gatsbyImageData,
+      image: data.github?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Codepen',
       url: EXTERNAL_PAGE_URL.CODEPEN,
       description: 'ちょっとしたアニメーションとかCSSを試すのに使っています。',
-      image: data.codepen.childImageSharp.gatsbyImageData,
+      image: data.codepen?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Twitter',
       url: EXTERNAL_PAGE_URL.TWITTER,
       description: '見る専。',
-      image: data.twitter.childImageSharp.gatsbyImageData,
+      image: data.twitter?.childImageSharp?.gatsbyImageData,
     },
   ];
 
@@ -70,8 +66,9 @@ export default WorksPage;
 
 export const Head: HeadFC = () => <title>Home Page</title>;
 
+/** query名をコンポーネントと揃えると、型を自動生成してくれる */
 export const query = graphql`
-  query ($language: String!) {
+  query WorksPage($language: String!) {
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
