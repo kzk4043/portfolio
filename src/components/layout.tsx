@@ -27,7 +27,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       </header>
       <main className="mx-auto max-w-7xl">{children}</main>
       {isTop || (
-        <footer className="mt-36 h-28 text-center text-sm lg:mt-20 lg:px-5">
+        <footer className="mt-20 h-28 text-center text-xs lg:px-5">
           <hr className="mx-auto max-w-7xl" />
           <p className="mt-10">© {thisYear} kzk4043. All rights reserved.</p>
         </footer>
