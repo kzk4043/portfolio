@@ -1,15 +1,17 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
+import { useTranslation } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
 import Layout from '@/components/layout';
 import WorkCardList from '@/components/workCardList';
 import { EXTERNAL_PAGE_URL } from '@/constants/pages';
 
 const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
+  const { t } = useTranslation();
   const personalDevCardList = [
     {
-      title: 'ポートフォリオ',
+      title: t('ポートフォリオ'),
       url: EXTERNAL_PAGE_URL.PORTFOLIO,
-      description: 'このサイトです。',
+      description: t('このサイトです。'),
       technology: 'Gatsby.js/TypeScript/Tailwind CSS',
       image: data.horse?.childImageSharp?.gatsbyImageData,
       linkList: [
@@ -24,26 +26,29 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
     {
       title: 'Zenn',
       url: EXTERNAL_PAGE_URL.ZENN,
-      description:
-        '不定期で技術記事を書いています。主にフロントエンドについて書いています。',
+      description: t(
+        '不定期で技術記事を書いています。主にフロントエンドについて書いています。'
+      ),
       image: data.zenn?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Github',
       url: EXTERNAL_PAGE_URL.GITHUB,
-      description: '私のリポジトリです。',
+      description: t('私のリポジトリです。'),
       image: data.github?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Codepen',
       url: EXTERNAL_PAGE_URL.CODEPEN,
-      description: 'ちょっとしたアニメーションとかCSSを試すのに使っています。',
+      description: t(
+        'ちょっとしたアニメーションとかCSSを試すのに使っています。'
+      ),
       image: data.codepen?.childImageSharp?.gatsbyImageData,
     },
     {
       title: 'Twitter',
       url: EXTERNAL_PAGE_URL.TWITTER,
-      description: '見る専。',
+      description: t('見る専。'),
       image: data.twitter?.childImageSharp?.gatsbyImageData,
     },
   ];
@@ -52,7 +57,7 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
     <Layout>
       <div className="lg:px-5">
         <div className="mt-14">
-          <WorkCardList title="個人開発" cardList={personalDevCardList} />
+          <WorkCardList title={t('個人開発')} cardList={personalDevCardList} />
         </div>
         <div className="mt-14">
           <WorkCardList title="SNS" cardList={snsCardList} />
