@@ -19,11 +19,15 @@ export const PAGE_URL = {
 /** サイト外のURL */
 export const EXTERNAL_PAGE_URL = {
   /** Zenn */
+  PORTFOLIO: 'https://portfolio35892.gatsbyjs.io',
+  /** Zenn */
   ZENN: 'https://zenn.dev/soma3134',
   /** Github */
   GITHUB: 'https://github.com/kzk4043',
   /** Codepen */
   CODEPEN: 'https://codepen.io/kzk4043',
+  /** Twitter */
+  TWITTER: 'https://twitter.com/kzk4043',
 }
 
 /** ページタイトル */

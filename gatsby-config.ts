@@ -10,9 +10,10 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
     'gatsby-plugin-postcss',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
@@ -29,9 +30,16 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/locales`,
-        name: `locale`
+        name: `locale`,
+        path: `${__dirname}/locales`
       }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`
+      },
     },
     {
       resolve: `gatsby-plugin-react-i18next`,
