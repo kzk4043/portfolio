@@ -49,7 +49,9 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
               )}
               <div className="absolute left-0 top-0 aspect-[243/131] w-full rounded-t-lg bg-[#125E8A] opacity-10 mix-blend-multiply"></div>
               <p className="mt-2 font-bold">
-                <AppLink to={url}>{title}</AppLink>
+                <AppLink type="inline" to={url}>
+                  {title}
+                </AppLink>
               </p>
               <p className="mt-2">{description}</p>
               {technology && <p>{technology}</p>}
@@ -57,7 +59,9 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
                 <p>
                   {linkList.map(({ title, url }) => (
                     <span className="mr-3">
-                      <AppLink to={url}>{title}</AppLink>
+                      <AppLink type="inline" to={url}>
+                        {title}
+                      </AppLink>
                     </span>
                   ))}
                 </p>

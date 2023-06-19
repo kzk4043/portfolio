@@ -19,7 +19,7 @@ const HeaderSp: React.FC = () => {
   return (
     <>
       <div className="mx-auto flex h-14 items-center justify-between bg-transparent px-3">
-        <AppLink to={PAGE_URL.TOP} withoutUnderline>
+        <AppLink type="withoutUnderline" to={PAGE_URL.TOP}>
           <div className="flex items-center">
             <StaticImage
               alt="horse icon"
@@ -115,16 +115,16 @@ const HeaderSp: React.FC = () => {
           </div>
           <div className="px-10">
             <div className="flex flex-col border-b border-text-black pb-4 text-xl leading-10">
-              <AppLink to={PAGE_URL.ABOUT} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.ABOUT}>
                 ABOUT
               </AppLink>
-              <AppLink to={PAGE_URL.SKILLS} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.SKILLS}>
                 SKILLS
               </AppLink>
-              <AppLink to={PAGE_URL.WORKS} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.WORKS}>
                 WORKS
               </AppLink>
-              <AppLink to={PAGE_URL.CONTACT} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.CONTACT}>
                 CONTACT
               </AppLink>
             </div>

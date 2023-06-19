@@ -123,7 +123,7 @@ const SkillsPage: React.FC<PageProps> = () => {
               i18nKey="backend"
               components={{
                 l: (
-                  <AppLink to="https://praha-challenge.com">
+                  <AppLink type="inline" to="https://praha-challenge.com">
                     プラハチャレンジ
                   </AppLink>
                 ),
@@ -139,7 +139,7 @@ const SkillsPage: React.FC<PageProps> = () => {
               i18nKey="infrastructure"
               components={{
                 l: (
-                  <AppLink to="https://praha-challenge.com">
+                  <AppLink type="inline" to="https://praha-challenge.com">
                     プラハチャレンジ
                   </AppLink>
                 ),
