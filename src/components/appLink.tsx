@@ -33,7 +33,7 @@ const AppLink: React.FC<Props> = ({
     'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:bg-text-black after:transition';
   /** リンクという意味の下線を引くクラス */
   const clickableUnderlineClasses =
-    'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:bg-text-main after:transition hover:after:opacity-60 text-text-main hover:opacity-60 transition';
+    'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:bg-text-main after:transition hover:after:opacity-60 text-text-main hover:opacity-60 transition';
   /** ホバー時下線を引くクラス */
   const hoverUnderlineClasses =
     'after:ease-[cubic-bezier(0.19, 1, 0.22, 1)] relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-full after:scale-0 after:bg-text-black after:transition hover:after:scale-100';
