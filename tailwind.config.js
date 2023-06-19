@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       colors: {
         'text-black': '#0b1013',
+        'text-main': '#125E8A',
         'top-animation-base': '#D9845D',
         'top-animation-sub': '#DEAD5E',
         'top-animation-hat': '#F0F09E',

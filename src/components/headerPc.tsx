@@ -68,7 +68,7 @@ const HeaderPc: React.FC = () => {
         {isTop ? (
           <div>
             <h1 className="ml-6 flex h-9 items-center">
-              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.TOP}>
                 kzk4043's PORTFOLIO
               </AppLink>
               <span
@@ -107,7 +107,7 @@ const HeaderPc: React.FC = () => {
         ) : (
           <div className="flex items-center">
             <h1 className="ml-6 flex items-center">
-              <AppLink to={PAGE_URL.TOP} withoutUnderline>
+              <AppLink type="withoutUnderline" to={PAGE_URL.TOP}>
                 kzk4043's PORTFOLIO
               </AppLink>
               <span>
