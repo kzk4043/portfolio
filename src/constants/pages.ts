@@ -28,6 +28,8 @@ export const EXTERNAL_PAGE_URL = {
   CODEPEN: 'https://codepen.io/kzk4043',
   /** Twitter */
   TWITTER: 'https://twitter.com/kzk4043',
+  /** Stackblitz */
+  STACKBLITZ: 'https://stackblitz.com/@kzk4043',
 }
 
 /** ページタイトル */

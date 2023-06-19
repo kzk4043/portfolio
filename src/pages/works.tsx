@@ -46,6 +46,12 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
       image: data.codepen?.childImageSharp?.gatsbyImageData,
     },
     {
+      title: 'Stackblitz',
+      url: EXTERNAL_PAGE_URL.STACKBLITZ,
+      description: t('ライブラリとかサクッと試したいときに使っています。'),
+      image: data.stackblitz?.childImageSharp?.gatsbyImageData,
+    },
+    {
       title: 'Twitter',
       url: EXTERNAL_PAGE_URL.TWITTER,
       description: t('見る専。'),
@@ -104,6 +110,11 @@ export const query = graphql`
       }
     }
     twitter: file(relativePath: { eq: "icon_twitter.png" }) {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    stackblitz: file(relativePath: { eq: "icon_stackblitz.png" }) {
       childImageSharp {
         gatsbyImageData
       }
