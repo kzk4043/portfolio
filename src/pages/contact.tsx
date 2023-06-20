@@ -30,17 +30,51 @@ const ContactPage: React.FC<PageProps> = () => {
 
   return (
     <Layout>
-      <div className="w-full">
-        <p>{emailStatusMessage}</p>
-        <form ref={form} onSubmit={sendEmail}>
-          <label>Name</label>
-          <input type="text" name="user_name" />
-          <label>Email</label>
-          <input type="email" name="user_email" />
-          <label>Message</label>
-          <textarea name="message" />
-          <input type="submit" value="Send" />
-        </form>
+      <div className="mt-14 w-full">
+        <div className="mx-auto w-[50%]">
+          <p>{emailStatusMessage}</p>
+          <form ref={form} onSubmit={sendEmail} className="flex flex-col">
+            <label htmlFor="user_name">Name</label>
+            <input
+              id="user_name"
+              type="text"
+              name="user_name"
+              className="border bg-white p-1"
+              required
+            />
+            <label htmlFor="user_email" className="mt-5">
+              Email
+            </label>
+            <input
+              id="user_email"
+              type="email"
+              name="user_email"
+              className="border bg-white p-1"
+              required
+            />
+            <label htmlFor="message" className="mt-5">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              className="overflow-visible border bg-white p-1"
+              required
+              onChange={(e) => {
+                // これ入れないとサイズが変わったあとに内容を削除したときなど動きがおかしい
+                e.target.style.height = 'auto';
+                // 改行に合わせて高さを変える
+                e.target.style.height = e.target.scrollHeight + 'px';
+              }}
+            />
+            <input
+              type="submit"
+              value="Send"
+              className="mx-auto mt-14 w-[20%] cursor-pointer rounded-lg bg-text-main p-2 font-bold text-white"
+            />
+          </form>
+        </div>
+        <div></div>
       </div>
     </Layout>
   );
