@@ -5,10 +5,13 @@ import Layout from '@/components/layout';
 
 const ContactPage: React.FC<PageProps> = () => {
   const form = React.useRef<HTMLFormElement>(null);
-  const [emailStatusMessage, setEmailStatusMessage] = React.useState('');
+  const [emailStatus, setEmailStatus] = React.useState<
+    'typing' | 'ready' | 'sending' | 'sent' | 'error'
+  >('typing');
 
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setEmailStatus('sending');
 
     if (!form.current) return;
 
@@ -20,19 +23,19 @@ const ContactPage: React.FC<PageProps> = () => {
         '2aJrhnLqd2u5p_3Yz'
       );
 
-      setEmailStatusMessage('メールが送信されました！返信をお待ち下さい。');
+      setEmailStatus('sent');
+      // フォームの内容をリセット（なぜかリキャストしないとエラーになる）
+      (event.target as HTMLFormElement).reset();
     } catch (error) {
-      setEmailStatusMessage(
-        'メール送信時にエラーが発生しました！お手数ですが再度送信してください。'
-      );
+      setEmailStatus('error');
     }
   };
 
   return (
     <Layout>
       <div className="mt-14 w-full">
-        <div className="mx-auto w-[50%]">
-          <p>{emailStatusMessage}</p>
+        <div className="mx-auto w-[50%] lg:w-full lg:px-5">
+          <p>{emailStatus}</p>
           <form ref={form} onSubmit={sendEmail} className="flex flex-col">
             <label htmlFor="user_name">Name</label>
             <input
