@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@acab/reset.css": "^0.5.3",
+    "@emailjs/browser": "^3.11.0",
     "clsx": "^1.2.1",
     "gatsby": "^5.9.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
