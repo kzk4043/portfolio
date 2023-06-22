@@ -12,6 +12,9 @@ module.exports = {
       colors: {
         'text-black': '#0b1013',
         'text-main': '#125E8A',
+        'text-main-20': '#125E8A20',
+        ok: '#32B28c',
+        no: '#E9546B',
         'top-animation-base': '#D9845D',
         'top-animation-sub': '#DEAD5E',
         'top-animation-hat': '#F0F09E',
@@ -70,6 +73,19 @@ module.exports = {
           '0%': { transform: 'rotateZ(30deg)' },
           '100%': { transform: 'rotateZ(-20deg)' },
         },
+        spinner: {
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'pop-in': {
+          from: {
+            transform: 'scale(.3)',
+            opacity: 0,
+          },
+          to: {
+            transform: 'scale(1)',
+            opacity: 1,
+          },
+        },
       },
       animation: {
         typing:
@@ -86,6 +102,8 @@ module.exports = {
         'top-wave': 'top-wave 2s linear infinite',
         'top-hat': 'top-hat 1s ease-in-out infinite alternate',
         'top-ship': 'top-ship 30s linear infinite alternate',
+        spinner: 'spinner 1s linear infinite',
+        'pop-in': 'pop-in .5s cubic-bezier(.87,-.41,.19,1.44) forwards',
       },
     },
   },
