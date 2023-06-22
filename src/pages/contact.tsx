@@ -66,7 +66,10 @@ const ContactPage: React.FC<PageProps> = () => {
     <Layout>
       <div className="mt-14 w-full">
         <div className="mx-auto w-[50%] lg:w-full lg:px-5">
-          <form ref={form} onSubmit={sendEmail} className="flex flex-col">
+          <p>
+            <Trans>お仕事等のご依頼は下記よりお願いいたします。</Trans>
+          </p>
+          <form ref={form} onSubmit={sendEmail} className="mt-14 flex flex-col">
             <label htmlFor="user_name">Name</label>
             <input
               id="user_name"
