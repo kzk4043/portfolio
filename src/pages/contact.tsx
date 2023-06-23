@@ -1,20 +1,22 @@
 import emailjs from '@emailjs/browser';
 import { clsx } from 'clsx';
-import { graphql, type HeadFC, type PageProps } from 'gatsby';
+import { graphql, Script, type HeadFC, type PageProps } from 'gatsby';
 import { Trans } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import Layout from '@/components/layout';
 
-/**
- * ・ReCaptcha
- */
 const ContactPage: React.FC<PageProps> = () => {
   const form = React.useRef<HTMLFormElement>(null);
   const [emailStatus, setEmailStatus] = React.useState<
     'typing' | 'ready' | 'sending' | 'sent' | 'error'
   >('typing');
+  const [isRecaptchaSuccessful, setIsRecaptchaSuccessful] =
+    React.useState(false);
 
-  /** メールを送信 */
+  /**
+   * メールを送信
+   * FIXME: ちょっとごちゃついてるなあ…Statusの設定の仕方が悪いか…？
+   */
   const sendEmail = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -33,27 +35,37 @@ const ContactPage: React.FC<PageProps> = () => {
       );
 
       setEmailStatus('sent');
-      // 表示時間
+      // 一定時間だけ表示する
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // フォームの内容をリセット（なぜかリキャストしないとエラーになる）
       (event.target as HTMLFormElement).reset();
+      // reCAPTCHAのリセット
+      window.grecaptcha?.reset();
       setEmailStatus('typing');
+      setIsRecaptchaSuccessful(false);
     } catch (error) {
       setEmailStatus('error');
-      // 表示時間
+      // 一定時間だけ表示する
       await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      // reCAPTCHAのリセット
+      window.grecaptcha?.reset();
       setEmailStatus('typing');
+      setIsRecaptchaSuccessful(false);
     }
   };
 
-  /** フォームのバリデーションチェック */
-  const checkValidity = () => {
-    if (!form.current) return;
+  /** フォームがバリデーション通ってるか */
+  const isFormValid = () => {
+    if (!form.current) return false;
 
-    const isValid = form.current.checkValidity();
+    return form.current.checkValidity();
+  };
 
-    if (isValid) {
+  /** フォームのバリデーション更新 */
+  const updateFormValidationStatus = () => {
+    if (isFormValid() && isRecaptchaSuccessful) {
       setEmailStatus('ready');
 
       return;
@@ -62,8 +74,26 @@ const ContactPage: React.FC<PageProps> = () => {
     setEmailStatus('typing');
   };
 
+  /**
+   * reCAPTCHAのコールバック
+   * reCAPTCHA側で関数実行するためwindowに紐付ける必要がある
+   */
+  window.onRecaptchaSuccess = () => {
+    setIsRecaptchaSuccessful(true);
+    isFormValid() ? setEmailStatus('ready') : setEmailStatus('typing');
+  };
+  window.onRecaptchaError = () => {
+    setIsRecaptchaSuccessful(false);
+    setEmailStatus('typing');
+  };
+  window.onRecaptchaExpired = () => {
+    setIsRecaptchaSuccessful(false);
+    setEmailStatus('typing');
+  };
+
   return (
     <Layout>
+      <Script src="https://www.google.com/recaptcha/api.js"></Script>
       <div className="mt-14 w-full">
         <div className="mx-auto w-[50%] lg:w-full lg:px-5">
           <p>
@@ -77,7 +107,7 @@ const ContactPage: React.FC<PageProps> = () => {
               name="user_name"
               className="border bg-white p-1"
               required
-              onChange={checkValidity}
+              onChange={updateFormValidationStatus}
             />
             <label htmlFor="user_email" className="mt-5">
               Email
@@ -88,7 +118,7 @@ const ContactPage: React.FC<PageProps> = () => {
               name="user_email"
               className="border bg-white p-1"
               required
-              onChange={checkValidity}
+              onChange={updateFormValidationStatus}
             />
             <label htmlFor="message" className="mt-5">
               Message
@@ -99,13 +129,20 @@ const ContactPage: React.FC<PageProps> = () => {
               className="overflow-visible border bg-white p-1"
               required
               onChange={(e) => {
-                checkValidity();
+                updateFormValidationStatus();
                 // これ入れないとサイズが変わったあとに内容を削除したときなど動きがおかしい
                 e.target.style.height = 'auto';
                 // 改行に合わせて高さを変える
                 e.target.style.height = e.target.scrollHeight + 'px';
               }}
             />
+            <div
+              className="g-recaptcha mx-auto mt-5"
+              data-sitekey="6Lceyb4mAAAAAB_pf_gkqBZ19fFQJPWmTlSKq6hJ"
+              data-callback="onRecaptchaSuccess"
+              data-error-callback="onRecaptchaError"
+              data-expired-callback="onRecaptchaExpired"
+            ></div>
             <div
               className={clsx('mx-auto mt-14 font-bold transition-all', {
                 'w-[20%] cursor-not-allowed rounded-lg bg-text-main text-white opacity-30':
