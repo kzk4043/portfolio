@@ -12,6 +12,7 @@ const ContactPage: React.FC<PageProps> = () => {
   >('typing');
   const [isRecaptchaSuccessful, setIsRecaptchaSuccessful] =
     React.useState(false);
+  const isBrowser = typeof window !== 'undefined';
 
   /**
    * メールを送信
@@ -41,7 +42,7 @@ const ContactPage: React.FC<PageProps> = () => {
       // フォームの内容をリセット（なぜかリキャストしないとエラーになる）
       (event.target as HTMLFormElement).reset();
       // reCAPTCHAのリセット
-      window.grecaptcha?.reset();
+      isBrowser && window.grecaptcha?.reset();
       setEmailStatus('typing');
       setIsRecaptchaSuccessful(false);
     } catch (error) {
@@ -50,7 +51,7 @@ const ContactPage: React.FC<PageProps> = () => {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       // reCAPTCHAのリセット
-      window.grecaptcha?.reset();
+      isBrowser && window.grecaptcha?.reset();
       setEmailStatus('typing');
       setIsRecaptchaSuccessful(false);
     }
@@ -78,18 +79,20 @@ const ContactPage: React.FC<PageProps> = () => {
    * reCAPTCHAのコールバック
    * reCAPTCHA側で関数実行するためwindowに紐付ける必要がある
    */
-  window.onRecaptchaSuccess = () => {
-    setIsRecaptchaSuccessful(true);
-    isFormValid() ? setEmailStatus('ready') : setEmailStatus('typing');
-  };
-  window.onRecaptchaError = () => {
-    setIsRecaptchaSuccessful(false);
-    setEmailStatus('typing');
-  };
-  window.onRecaptchaExpired = () => {
-    setIsRecaptchaSuccessful(false);
-    setEmailStatus('typing');
-  };
+  React.useEffect(() => {
+    window.onRecaptchaSuccess = () => {
+      setIsRecaptchaSuccessful(true);
+      isFormValid() ? setEmailStatus('ready') : setEmailStatus('typing');
+    };
+    window.onRecaptchaError = () => {
+      setIsRecaptchaSuccessful(false);
+      setEmailStatus('typing');
+    };
+    window.onRecaptchaExpired = () => {
+      setIsRecaptchaSuccessful(false);
+      setEmailStatus('typing');
+    };
+  }, []);
 
   return (
     <Layout>
