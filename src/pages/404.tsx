@@ -1,5 +1,6 @@
 import { Link, HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
+import SeoHead from '@/components/head';
 
 const pageStyles = {
   color: '#232129',
@@ -46,4 +47,20 @@ const NotFoundPage: React.FC<PageProps> = () => {
 
 export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title="Not found"
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'ページが見つかりませんでした。'
+          : 'Page not found.'
+      }
+    />
+  );
+};

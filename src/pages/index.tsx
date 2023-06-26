@@ -1,7 +1,9 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import * as React from 'react';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import TopMainAnimation from '@/components/topMainAnimation';
+import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -13,7 +15,23 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title={PAGE_TITLE[PAGE_URL.TOP]}
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'kzk4043のポートフォリオサイトです。'
+          : "This is kzk4043's portfolio site."
+      }
+    />
+  );
+};
 
 export const query = graphql`
   query ($language: String!) {

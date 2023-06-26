@@ -3,7 +3,9 @@ import { clsx } from 'clsx';
 import { graphql, Script, type HeadFC, type PageProps } from 'gatsby';
 import { Trans } from 'gatsby-plugin-react-i18next';
 import React from 'react';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
+import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
 const ContactPage: React.FC<PageProps> = () => {
   const form = React.useRef<HTMLFormElement>(null);
@@ -29,10 +31,10 @@ const ContactPage: React.FC<PageProps> = () => {
       setEmailStatus('sending');
 
       await emailjs.sendForm(
-        'service_gajfc0u',
-        'template_0frletv',
+        process.env.EMAILJS_SERVICE_ID || '',
+        process.env.EMAILJS_TEMPLATE_ID || '',
         form.current,
-        '2aJrhnLqd2u5p_3Yz'
+        process.env.EMAILJS_PUBLIC_KEY || ''
       );
 
       setEmailStatus('sent');
@@ -141,7 +143,7 @@ const ContactPage: React.FC<PageProps> = () => {
             />
             <div
               className="g-recaptcha mx-auto mt-5"
-              data-sitekey="6Lceyb4mAAAAAB_pf_gkqBZ19fFQJPWmTlSKq6hJ"
+              data-sitekey={process.env.RECAPTCHA_SITE_KEY}
               data-callback="onRecaptchaSuccess"
               data-error-callback="onRecaptchaError"
               data-expired-callback="onRecaptchaExpired"
@@ -196,7 +198,23 @@ const ContactPage: React.FC<PageProps> = () => {
 
 export default ContactPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title={PAGE_TITLE[PAGE_URL.CONTACT]}
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'お問い合わせページです。'
+          : 'This is contact page.'
+      }
+    />
+  );
+};
 
 export const query = graphql`
   query ($language: String!) {
