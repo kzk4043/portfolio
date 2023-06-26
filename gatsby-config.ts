@@ -33,9 +33,9 @@ const config: GatsbyConfig = {
           // Setting this parameter is also optional
           respectDNT: true,
           // Avoids sending pageview hits from custom paths
-          exclude: ["/preview/**", "/do-not-track/me/too/"],
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
           // Defaults to https://www.googletagmanager.com
-          origin: process.env.GATSBY_ORIGIN_URL,
+          // origin: "YOUR_SELF_HOSTED_ORIGIN",
           // Delays processing pageview events on route update (in milliseconds)
           delayOnRouteUpdate: 0,
         },
