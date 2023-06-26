@@ -2,6 +2,7 @@ import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 
 const AboutPage: React.FC<PageProps> = () => {
@@ -139,7 +140,23 @@ const AboutPage: React.FC<PageProps> = () => {
 
 export default AboutPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title="ABOUT"
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'kzk4043の自己紹介ページです。'
+          : "This is kzk4043's self-introduction page."
+      }
+    />
+  );
+};
 
 export const query = graphql`
   query ($language: String!) {

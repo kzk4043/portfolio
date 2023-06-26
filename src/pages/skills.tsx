@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from 'recharts';
 import AppLink from '@/components/appLink';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 
 const SkillsPage: React.FC<PageProps> = () => {
@@ -165,7 +166,23 @@ const SkillsPage: React.FC<PageProps> = () => {
 
 export default SkillsPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title="SKILLS"
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'kzk4043のスキルについてのページです。'
+          : "This is kzk4043's skills page."
+      }
+    />
+  );
+};
 
 export const query = graphql`
   query ($language: String!) {

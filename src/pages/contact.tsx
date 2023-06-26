@@ -3,6 +3,7 @@ import { clsx } from 'clsx';
 import { graphql, Script, type HeadFC, type PageProps } from 'gatsby';
 import { Trans } from 'gatsby-plugin-react-i18next';
 import React from 'react';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 
 const ContactPage: React.FC<PageProps> = () => {
@@ -196,7 +197,23 @@ const ContactPage: React.FC<PageProps> = () => {
 
 export default ContactPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title="CONTACT"
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'お問い合わせページです。'
+          : 'This is contact page.'
+      }
+    />
+  );
+};
 
 export const query = graphql`
   query ($language: String!) {

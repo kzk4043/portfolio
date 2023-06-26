@@ -1,6 +1,7 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
+import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import WorkCardList from '@/components/workCardList';
 import { EXTERNAL_PAGE_URL } from '@/constants/pages';
@@ -75,7 +76,23 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
 
 export default WorksPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = ({ pageContext }) => {
+  // FIXME: pageContextの型の当て方がわからなかった
+  const currentLang = (pageContext as { language: string }).language;
+
+  return (
+    <SeoHead
+      language={currentLang}
+      title="WORKS"
+      description={
+        // FIXME: useTranslationが使えなかった
+        currentLang === 'ja'
+          ? 'kzk4043の作ったものについてのページです。'
+          : "This is kzk4043's works page."
+      }
+    />
+  );
+};
 
 /** query名をコンポーネントと揃えると、型を自動生成してくれる */
 export const query = graphql`
