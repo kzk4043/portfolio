@@ -20,7 +20,7 @@ const SeoHead: React.FC<Props> = ({ language, title, description }) => {
       <meta property="og:description" content={description} />
       <meta
         property="og:image"
-        content={`${process.env.ORIGIN_URL}/images/icon_horse.png`}
+        content={`${process.env.GATSBY_ORIGIN_URL}/images/icon_horse.png`}
       />
     </>
   );

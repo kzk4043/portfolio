@@ -31,10 +31,10 @@ const ContactPage: React.FC<PageProps> = () => {
       setEmailStatus('sending');
 
       await emailjs.sendForm(
-        process.env.EMAILJS_SERVICE_ID || '',
-        process.env.EMAILJS_TEMPLATE_ID || '',
+        process.env.GATSBY_EMAILJS_SERVICE_ID || '',
+        process.env.GATSBY_EMAILJS_TEMPLATE_ID || '',
         form.current,
-        process.env.EMAILJS_PUBLIC_KEY || ''
+        process.env.GATSBY_EMAILJS_PUBLIC_KEY || ''
       );
 
       setEmailStatus('sent');
@@ -143,7 +143,7 @@ const ContactPage: React.FC<PageProps> = () => {
             />
             <div
               className="g-recaptcha mx-auto mt-5"
-              data-sitekey={process.env.RECAPTCHA_SITE_KEY}
+              data-sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}
               data-callback="onRecaptchaSuccess"
               data-error-callback="onRecaptchaError"
               data-expired-callback="onRecaptchaExpired"
