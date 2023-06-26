@@ -5,6 +5,7 @@ import { Trans } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
+import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
 const ContactPage: React.FC<PageProps> = () => {
   const form = React.useRef<HTMLFormElement>(null);
@@ -204,7 +205,7 @@ export const Head: HeadFC = ({ pageContext }) => {
   return (
     <SeoHead
       language={currentLang}
-      title="CONTACT"
+      title={PAGE_TITLE[PAGE_URL.CONTACT]}
       description={
         // FIXME: useTranslationが使えなかった
         currentLang === 'ja'

@@ -3,6 +3,7 @@ import * as React from 'react';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import TopMainAnimation from '@/components/topMainAnimation';
+import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -21,7 +22,7 @@ export const Head: HeadFC = ({ pageContext }) => {
   return (
     <SeoHead
       language={currentLang}
-      title="TOP"
+      title={PAGE_TITLE[PAGE_URL.TOP]}
       description={
         // FIXME: useTranslationが使えなかった
         currentLang === 'ja'

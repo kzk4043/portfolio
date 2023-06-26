@@ -4,7 +4,7 @@ import * as React from 'react';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import WorkCardList from '@/components/workCardList';
-import { EXTERNAL_PAGE_URL } from '@/constants/pages';
+import { PAGE_TITLE, PAGE_URL, EXTERNAL_PAGE_URL } from '@/constants/pages';
 
 const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
   const { t } = useTranslation();
@@ -83,7 +83,7 @@ export const Head: HeadFC = ({ pageContext }) => {
   return (
     <SeoHead
       language={currentLang}
-      title="WORKS"
+      title={PAGE_TITLE[PAGE_URL.WORKS]}
       description={
         // FIXME: useTranslationが使えなかった
         currentLang === 'ja'

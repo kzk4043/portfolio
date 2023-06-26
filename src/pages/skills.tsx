@@ -13,6 +13,7 @@ import {
 import AppLink from '@/components/appLink';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
+import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
 const SkillsPage: React.FC<PageProps> = () => {
   const { t } = useTranslation();
@@ -173,7 +174,7 @@ export const Head: HeadFC = ({ pageContext }) => {
   return (
     <SeoHead
       language={currentLang}
-      title="SKILLS"
+      title={PAGE_TITLE[PAGE_URL.SKILLS]}
       description={
         // FIXME: useTranslationが使えなかった
         currentLang === 'ja'
