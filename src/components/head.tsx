@@ -15,6 +15,13 @@ const SeoHead: React.FC<Props> = ({ language, title, description }) => {
       <html lang={language} />
       <title>{title} | kzk4043's PORTFOLIO</title>
       <meta name="description" content={description} />
+      <meta name="twitter:card" content="summary" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta
+        property="og:image"
+        content={`${window.location.origin}/images/icon_horse.png`}
+      />
     </>
   );
 };
