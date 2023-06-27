@@ -12,6 +12,7 @@ module.exports = {
       colors: {
         'text-black': '#0b1013',
         'text-main': '#125E8A',
+        'text-main-80': '#125E8A80',
         'text-main-20': '#125E8A20',
         ok: '#32B28c',
         no: '#E9546B',
@@ -86,6 +87,22 @@ module.exports = {
             opacity: 1,
           },
         },
+        rotate: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        hovering: {
+          '0%': { top: '75%' },
+          '100%': { top: '74%' },
+        },
+        'wing-flap-l': {
+          '0%': { clipPath: 'polygon(0 0, 100% 0, 10% 100%)' },
+          '100%': { clipPath: 'polygon(0 0, 100% 0, 10% 0)' },
+        },
+        'wing-flap-r': {
+          '0%': { clipPath: 'polygon(0 100%, 30% 100%, 100% 100%)' },
+          '100%': { clipPath: 'polygon(0 100%, 30% 0, 100% 100%)' },
+        },
       },
       animation: {
         typing:
@@ -104,6 +121,12 @@ module.exports = {
         'top-ship': 'top-ship 30s linear infinite alternate',
         spinner: 'spinner 1s linear infinite',
         'pop-in': 'pop-in .5s cubic-bezier(.87,-.41,.19,1.44) forwards',
+        rotate: 'rotate 100s linear infinite',
+        hovering: 'hovering .7s linear infinite alternate',
+        'wing-flap-l':
+          'wing-flap-l .7s cubic-bezier(.1,.48,.81,.73) infinite alternate',
+        'wing-flap-r':
+          'wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate',
       },
     },
   },
