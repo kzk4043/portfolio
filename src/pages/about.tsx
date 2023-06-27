@@ -2,6 +2,7 @@ import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
+import AboutMainAnimation from '@/components/aboutMainAnimation';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
@@ -127,12 +128,8 @@ const AboutPage: React.FC<PageProps> = () => {
             </div>
           </div>
         </div>
-        <div className="mt-14 grow">
-          <StaticImage
-            alt="アニメーション化予定"
-            src="../images/image_traveler.png"
-            className="w-full"
-          />
+        <div className="grow">
+          <AboutMainAnimation />
         </div>
       </div>
     </Layout>
