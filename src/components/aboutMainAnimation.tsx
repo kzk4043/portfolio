@@ -148,14 +148,14 @@ const AboutMainAnimation: React.FC = () => {
         <div className="absolute bottom-0 left-0 right-0 top-0 m-auto aspect-square w-[56%] rounded-full border-[5px] border-white" />
         <div className="absolute bottom-0 left-0 right-0 top-0 m-auto aspect-square w-[55%] rounded-full border-[15px] border-[hsl(10,80%,60%)]" />
         <div className="absolute bottom-0 left-0 right-0 top-0 m-auto aspect-square w-[54%] animate-rotate rounded-full border-4 border-dotted" />
-        {[...Array(8)].map((_, i) => {
+        {[...Array(15)].map((_, i) => {
           return (
             <div
               className="absolute bottom-0 left-0 right-0 top-0 m-auto aspect-square animate-[rotate_8s_linear_reverse_infinite_-2s] rounded-full border-4"
               style={{
                 width: `${51 - i * 2}%`,
-                borderColor: `hsl(${Math.random() * 360}, 80%, 60%)`,
-                borderTopColor: 'transparent',
+                borderColor: `hsl(${180 + Math.random() * 60}, 80%, 60%)`,
+                borderTopColor: `hsl(${180 + Math.random() * 70}, 80%, 60%)`,
                 animation: `rotate ${8 + Math.random() * 8}s linear ${
                   Math.random() > 0.7 ? 'reverse' : ''
                 } infinite ${-Math.random() * 5}s`,
