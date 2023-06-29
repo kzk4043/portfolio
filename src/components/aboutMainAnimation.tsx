@@ -60,6 +60,17 @@ const AboutMainAnimation: React.FC = () => {
       </div>
       <div className="air">
         {[...Array(3)].map((_, i) => {
+          const wingFlapL = [
+            'animate-wing-flap-l-1',
+            'animate-wing-flap-l-2',
+            'animate-wing-flap-l-3',
+          ];
+          const wingFlapR = [
+            'animate-wing-flap-r-1',
+            'animate-wing-flap-r-2',
+            'animate-wing-flap-r-3',
+          ];
+
           return (
             <div
               className="base absolute h-[15%] w-[15%] origin-[0_-210%]"
@@ -83,21 +94,15 @@ const AboutMainAnimation: React.FC = () => {
                   }}
                 />
                 <div
-                  className="wing-l absolute left-[8%] top-[5%] h-[15%] w-[5%] bg-text-black"
+                  className={`wing-l ${wingFlapL[i]} absolute left-[8%] top-[5%] h-[15%] w-[5%] bg-text-black`}
                   style={{
                     clipPath: 'polygon(0 0, 100% 0, 10% 100%)',
-                    animation: `wing-flap-l .7s cubic-bezier(.1,.48,.81,.73) infinite alternate ${
-                      -i * 0.3
-                    }s`,
                   }}
                 />
                 <div
-                  className="wing-r absolute left-[8%] top-[-10%] h-[15%] w-[5%] bg-text-main-80"
+                  className={`wing-r ${wingFlapR[i]} absolute left-[8%] top-[-10%] h-[15%] w-[5%] bg-text-main-80`}
                   style={{
                     clipPath: 'polygon(0 100%, 30% 0, 100% 100%)',
-                    animation: `wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate ${
-                      -i * 0.3
-                    }s`,
                   }}
                 />
               </div>
