@@ -3,7 +3,7 @@ import React from 'react';
 const AboutMainAnimation: React.FC = () => {
   return (
     <div className="relative aspect-square w-full">
-      <div className="buildings">
+      <div className="ground">
         <div className="building absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-rotate">
           <div className="h-[65%] w-[40%] -translate-x-1/2 bg-[#888a91]">
             {[...Array(4)].map((_, i) => {
@@ -33,7 +33,38 @@ const AboutMainAnimation: React.FC = () => {
                   clipPath:
                     'polygon(28% 0, 40% 20%, 45% 0%, 50% 10%, 60% 0%, 62% 15%, 72% 0%, 59% 32%, 41% 32%)',
                 }}
-              ></div>
+              />
+            </div>
+          </div>
+        </div>
+        <div className="car absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_70s_linear_infinite_-10s]">
+          <div className="h-[35%] w-[35%] -translate-x-1/2">
+            <div
+              className="body absolute left-[0%] top-[28%] h-[70%] w-[100%] rounded bg-no"
+              style={{
+                clipPath:
+                  'polygon(96% 0, 100% 6%, 100% 33%, 88% 70%, 41% 70%, 30% 48%, 5% 40%, 0 31%, 0 6%, 6% 0)',
+              }}
+            />
+            <div
+              className="body absolute left-[0%] top-[28%] h-[70%] w-[100%] rounded bg-gray-200"
+              style={{
+                clipPath:
+                  'polygon(35% 30%, 60% 30%, 60% 60%, 44% 60%, 35% 40%)',
+              }}
+            />
+            <div
+              className="body absolute left-[0%] top-[28%] h-[70%] w-[100%] rounded bg-gray-200"
+              style={{
+                clipPath:
+                  'polygon(67% 30%, 90% 30%, 90% 40%, 85% 60%, 67% 60%)',
+              }}
+            />
+            <div className="tire absolute left-[25%] top-[18%] h-[25%] w-[25%] rounded-full bg-text-main">
+              <div className="tire absolute left-[50%] top-[50%] h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-200" />
+            </div>
+            <div className="tire absolute left-[65%] top-[18%] h-[25%] w-[25%] rounded-full bg-text-main">
+              <div className="tire absolute left-[50%] top-[50%] h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-200" />
             </div>
           </div>
         </div>
