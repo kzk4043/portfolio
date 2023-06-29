@@ -123,10 +123,18 @@ module.exports = {
         'pop-in': 'pop-in .5s cubic-bezier(.87,-.41,.19,1.44) forwards',
         rotate: 'rotate 100s linear infinite',
         hovering: 'hovering .7s linear infinite alternate',
-        'wing-flap-l':
+        'wing-flap-l-1':
           'wing-flap-l .7s cubic-bezier(.1,.48,.81,.73) infinite alternate',
-        'wing-flap-r':
+        'wing-flap-l-2':
+          'wing-flap-l .6s cubic-bezier(.1,.48,.81,.73) infinite alternate .5s',
+        'wing-flap-l-3':
+          'wing-flap-l .7s cubic-bezier(.1,.48,.81,.73) infinite alternate .2s',
+        'wing-flap-r-1':
           'wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate',
+        'wing-flap-r-2':
+          'wing-flap-r .6s cubic-bezier(.1,.48,.81,.73) infinite alternate .5s',
+        'wing-flap-r-3':
+          'wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate .2s',
       },
     },
   },
