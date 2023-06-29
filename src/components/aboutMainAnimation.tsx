@@ -130,6 +130,128 @@ const AboutMainAnimation: React.FC = () => {
         })}
       </div>
       <div className="air">
+        <div className="base absolute left-[50%] top-[5%] h-[15%] w-[15%] origin-[0_300%] animate-[rotate_70s_linear_reverse_infinite]">
+          <div className="airplane h-[80%] w-[80%] -translate-x-1/2">
+            <svg
+              className="box h-full w-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              {/* くちばし */}
+              <path d="M11,67 L5,70 L11,73 Z" fill="hsl(20 50% 50%)" />
+              {/* 本体 */}
+              <path
+                d="M17,69 L28,65 L73,65 L73,73 L17,73 Z"
+                fill="hsl(20 50% 50%)"
+              />
+              <path
+                d="M30,69 L70,69"
+                stroke="white"
+                stroke-width="3"
+                stroke-dasharray="3 2"
+              />
+              {/* バルーン */}
+              <path
+                d="M50,67 C20,67 20,30 50,30 L80,40 L85,40 L85,50 C60,65 80,65 70,65 Z"
+                fill="hsl(20 50% 50%)"
+              />
+              {/* 操舵翼？後ろの翼 */}
+              <path
+                d="M85,40 C85,30 98,30 100,40 L97,65 C95,70 90,70 88,65 L85,50"
+                fill="hsl(20 50% 50%)"
+              />
+              {/* 下の出っ張り */}
+              <path
+                d="M35,73 L60,73 L60,85 L45,85 C35,85 35,70 35,70 Z"
+                fill="hsl(20 50% 50%)"
+              />
+              {/* 羽 */}
+              <path d="M20,60 L25,60 L65,70 L50,70 Z" fill="hsl(20 50% 50%)" />
+              {/* 後ろのプロペラシャフト */}
+              <path
+                d="M70,67 90,67"
+                stroke="hsl(20 50% 50%)"
+                stroke-width="1"
+              />
+              {/* プロペラ */}
+              <g
+                className="origin-[20px_60px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="main-r origin-[20px_60px] animate-[rotate_1s_linear_infinite]"
+                  d="M8,60 32,60 M20,48 20,72 M11,51 29,69 M29,51 11,69"
+                  stroke="hsl(40 90% 60%)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </g>
+              <g
+                className="origin-[50px_70px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="main-l origin-[50px_70px] animate-[rotate_1s_linear_infinite]"
+                  d="M38,70 62,70 M50,58 50,82 M41,61 59,79 M59,61 41,79"
+                  stroke="hsl(40 90% 60%)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </g>
+              {/* 後ろのプロペラ */}
+              <g
+                className="back-1 origin-[76px_67px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="back-1 origin-[76px_67px] animate-[rotate_1s_linear_infinite]"
+                  d="M71,67 81,67 M76,62 76,72 M73,64 79,70 M79,64 73,70"
+                  stroke="hsl(40 90% 40%)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                />
+              </g>
+              <g
+                className="back-2 origin-[79px_67px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="back-2 origin-[79px_67px] animate-[rotate_1s_linear_infinite]"
+                  d="M74,67 84,67 M79,62 79,72 M76,64 82,70 M82,64 76,70"
+                  stroke="hsl(40 90% 40%)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                />
+              </g>
+              <g
+                className="back-3 origin-[82px_67px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="back-3 origin-[82px_67px] animate-[rotate_1s_linear_infinite]"
+                  d="M77,67 87,67 M82,62 82,72 M79,64 85,70 M85,64 79,70"
+                  stroke="hsl(40 90% 40%)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                />
+              </g>
+              <g
+                className="back-4 origin-[85px_67px]"
+                style={{ transform: 'rotateY(60deg)' }}
+              >
+                <path
+                  className="back-4 origin-[85px_67px] animate-[rotate_1s_linear_infinite]"
+                  d="M80,67 90,67 M85,62 85,72 M82,64 88,70 M88,64 82,70"
+                  stroke="hsl(40 90% 40%)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                />
+              </g>
+              {/* 船首 */}
+              <circle cx="15" cy="70" r="5" fill="hsl(20 50% 50%)" />
+            </svg>
+          </div>
+        </div>
         {[...Array(3)].map((_, i) => {
           const wingFlapL = [
             'animate-wing-flap-l-1',
