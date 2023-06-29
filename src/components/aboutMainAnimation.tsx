@@ -4,6 +4,41 @@ const AboutMainAnimation: React.FC = () => {
   return (
     <div className="relative aspect-square w-full">
       <div className="ground">
+        {[...Array(50)].map((_, i) => {
+          return (
+            <div
+              className="tree #animate-[rotate_70s_linear_infinite_-10s] absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%]"
+              style={{
+                animation: `rotate 100s linear infinite ${
+                  -i * Math.random() * 4
+                }s`,
+              }}
+            >
+              <div
+                className="h-[50%] w-[30%] -translate-x-1/2"
+                style={{
+                  height: `${35 + Math.random() * 20}%`,
+                  width: `${15 + Math.random() * 20}%`,
+                }}
+              >
+                <svg
+                  className="box h-full w-full"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M50,25 C45,20 0,25 20,40 C5,40 5,50 20,50 C10,55 15,65 30,60 C20,65 35,80 36,80 C30,85 35,90 45,90 C45,100 55,100 60,80 C67,83 75,70 65,68 C70,70 75,50 70,45 C75,55 85,40 80,35 C90,30 75,20 75,23 Z"
+                    fill={`hsl(${40 + Math.random() * 80}140, 80%, 60%)`}
+                  />
+                  <path
+                    d="M40,0 L42,15 L43,37 L20,47 L43,42 L50,70 L55,55 L68,60 L55,50 L56,37 L73,40 L56,32 L60,0 Z"
+                    fill={`hsl(${30 + Math.random() * 10}140, 80%, 45%)`}
+                  />
+                </svg>
+              </div>
+            </div>
+          );
+        })}
         <div className="eiffel absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_100s_linear_infinite_-20s]">
           <div className="h-[100%] w-[70%] -translate-x-1/2">
             <svg
