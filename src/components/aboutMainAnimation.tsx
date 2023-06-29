@@ -4,6 +4,46 @@ const AboutMainAnimation: React.FC = () => {
   return (
     <div className="relative aspect-square w-full">
       <div className="ground">
+        <div className="eiffel absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_100s_linear_infinite_-20s]">
+          <div className="h-[100%] w-[70%] -translate-x-1/2">
+            <svg
+              className="box h-full w-full"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0,0 Q40,20 47,95 L53,95 Q60,20 100,0"
+                fill="hsl(340, 80%, 60%)"
+              />
+              <path
+                d="M28,27 L25,32 L75,32 72,27 Z"
+                fill="hsl(340, 80%, 60%)"
+              />
+              <path
+                d="M36,47 L35,52 L65,52 64,47 Z"
+                fill="hsl(340, 80%, 60%)"
+              />
+              <path
+                stroke-width="3"
+                d="M28,30 L72,30 M37,50 L63,50"
+                stroke="white"
+                stroke-dasharray="3 2"
+              />
+              <path
+                stroke-width="3"
+                d="M50,95 L50,100"
+                stroke="hsl(340, 80%, 60%)"
+              />
+              <path
+                stroke-width="4"
+                d="M46,94 L54,94 M46,90 L54,90 "
+                stroke="hsl(340, 80%, 60%)"
+                stroke-linecap="round"
+              />
+              <path d="M30,0 C30,35 70,35 70,0 Z" fill="white" />
+            </svg>
+          </div>
+        </div>
         <div className="building absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-rotate">
           <div className="h-[65%] w-[40%] -translate-x-1/2 bg-[#888a91]">
             {[...Array(4)].map((_, i) => {
