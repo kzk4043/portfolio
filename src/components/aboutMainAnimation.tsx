@@ -4,10 +4,11 @@ const AboutMainAnimation: React.FC = () => {
   return (
     <div className="relative aspect-square w-full">
       <div className="ground">
+        {/* 木 */}
         {[...Array(50)].map((_, i) => {
           return (
             <div
-              className="tree #animate-[rotate_70s_linear_infinite_-10s] absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%]"
+              className="tree absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%]"
               style={{
                 animation: `rotate 100s linear infinite ${
                   -i * Math.random() * 4
@@ -28,17 +29,124 @@ const AboutMainAnimation: React.FC = () => {
                 >
                   <path
                     d="M50,25 C45,20 0,25 20,40 C5,40 5,50 20,50 C10,55 15,65 30,60 C20,65 35,80 36,80 C30,85 35,90 45,90 C45,100 55,100 60,80 C67,83 75,70 65,68 C70,70 75,50 70,45 C75,55 85,40 80,35 C90,30 75,20 75,23 Z"
-                    fill={`hsl(${40 + Math.random() * 80}140, 80%, 60%)`}
+                    fill={`hsl(${40 + Math.random() * 80}, 80%, 60%)`}
                   />
                   <path
                     d="M40,0 L42,15 L43,37 L20,47 L43,42 L50,70 L55,55 L68,60 L55,50 L56,37 L73,40 L56,32 L60,0 Z"
-                    fill={`hsl(${30 + Math.random() * 10}140, 80%, 45%)`}
+                    fill={`hsl(${30 + Math.random() * 10}, 80%, 45%)`}
                   />
                 </svg>
               </div>
             </div>
           );
         })}
+        {/* 家 */}
+        {[...Array(10)].map((_, i) => {
+          const mainRandom = Math.random();
+          const mainColor = `hsl(${mainRandom * 360} 80% 60%)`;
+          const mainColor20 = `hsl(${mainRandom * 360} 80% 60%/ .4)`;
+          const doorColor = `hsl(${mainRandom * 360 + 180} 80% 60%)`;
+
+          return (
+            <div
+              className="house absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] rotate-180"
+              style={{
+                animation: `rotate 100s linear infinite ${
+                  -i * Math.random() * 50 - 40
+                }s`,
+              }}
+            >
+              <div
+                className="h-[50%] w-[40%] -translate-x-1/2"
+                style={{
+                  height: `${40 + Math.random() * 20}%`,
+                  width: `${30 + Math.random() * 20}%`,
+                }}
+              >
+                <svg
+                  className="box h-full w-full"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  {/* 家 */}
+                  <path
+                    d="M10,0 L10,70 L50,95 L70,82 L70,95 L80,95 L80,77 L90,70 L90,0 Z M22,42 L22,62 L42,62 L42,42 Z M58,42 L58,62 L78,62 L78,42 Z M42,68 L42,80 L58,80 L58,68 Z"
+                    fill={mainColor}
+                    fill-rule="evenodd"
+                  />
+                  {/* 屋根 */}
+                  <path
+                    d="M5,65 L50,95 M50,95 L95,65"
+                    stroke={`hsl(${30 + Math.random() * 10}, 80%, 45%)`}
+                    stroke-width="7"
+                  />
+                  {/* ドア */}
+                  <path
+                    d="M20,0 L20,30 C20,40 40,40 40,30 L40,30 L40,0 Z"
+                    fill={doorColor}
+                  />
+                  <circle cx="35" cy="25" r="2" fill="white" />
+                  {/* 窓 */}
+                  <path
+                    d="M22,42 L22,62 L42,62 L42,42 Z M22,52 L42,52 M32,42 L32,62"
+                    stroke="white"
+                    stroke-width="2"
+                    fill={mainColor20}
+                  />
+                  <path
+                    d="M58,42 L58,62 L78,62 L78,42 Z M58,52 L78,52 M68,42 L68,62"
+                    stroke="white"
+                    stroke-width="2"
+                    fill={mainColor20}
+                  />
+                  <path
+                    d="M42,68 L42,80 L58,80 L58,68 Z M42,74 L58,74 M50,68 L50,80"
+                    stroke="white"
+                    stroke-width="2"
+                    fill={mainColor20}
+                  />
+                </svg>
+              </div>
+            </div>
+          );
+        })}
+        {/* ビル */}
+        {[...Array(4)].map((_, index) => {
+          return (
+            <div
+              className="building absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%]"
+              style={{
+                animation: `rotate 100s linear infinite ${
+                  -index * Math.random() * 50 - 30
+                }s`,
+              }}
+            >
+              <div
+                className="h-[65%] w-[40%] -translate-x-1/2"
+                style={{
+                  height: `${55 + Math.random() * 20}%`,
+                  width: `${30 + Math.random() * 10}%`,
+                  backgroundColor: `hsl(${Math.random() * 360} 30% 50%)`,
+                }}
+              >
+                {[...Array(5)].map((_, i) => {
+                  return [...Array(5)].map((_, j) => {
+                    return (
+                      <div
+                        className={`absolute top-[5%] h-[10%] w-[15%] bg-[#bbecf4]`}
+                        style={{
+                          top: `${30 + 13 * i}%`,
+                          left: `${5 + 19 * j}%`,
+                        }}
+                      />
+                    );
+                  });
+                })}
+              </div>
+            </div>
+          );
+        })}
+        {/* エッフェル塔 */}
         <div className="eiffel absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_100s_linear_infinite_-20s]">
           <div className="h-[100%] w-[70%] -translate-x-1/2">
             <svg
@@ -79,23 +187,7 @@ const AboutMainAnimation: React.FC = () => {
             </svg>
           </div>
         </div>
-        <div className="building absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-rotate">
-          <div className="h-[65%] w-[40%] -translate-x-1/2 bg-[#888a91]">
-            {[...Array(4)].map((_, i) => {
-              return [...Array(5)].map((_, j) => {
-                return (
-                  <div
-                    className={`absolute top-[5%] h-[14%] w-[15%] bg-[#bbecf4]`}
-                    style={{
-                      top: `${25 + 18 * i}%`,
-                      left: `${5 + 19 * j}%`,
-                    }}
-                  />
-                );
-              });
-            })}
-          </div>
-        </div>
+        {/* 富士山 */}
         <div className="mountain">
           <div className="base absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_100s_linear_infinite_-10s]">
             <div
@@ -112,6 +204,7 @@ const AboutMainAnimation: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* 車 */}
         <div className="car absolute left-[50%] top-[77%] h-[15%] w-[15%] origin-[0_-180%] animate-[rotate_70s_linear_infinite_-10s]">
           <div className="h-[35%] w-[35%] -translate-x-1/2">
             <div
@@ -165,8 +258,9 @@ const AboutMainAnimation: React.FC = () => {
         })}
       </div>
       <div className="air">
-        <div className="base absolute left-[50%] top-[5%] h-[15%] w-[15%] origin-[0_300%] animate-[rotate_70s_linear_reverse_infinite]">
-          <div className="airplane h-[80%] w-[80%] -translate-x-1/2">
+        {/* タイガーモス号 */}
+        <div className="base absolute left-[50%] top-[-5%] h-[15%] w-[15%] origin-[0_350%] animate-[rotate_7s_linear_reverse_infinite]">
+          <div className="laputa h-[80%] w-[80%] -translate-x-1/2">
             <svg
               className="box h-full w-full"
               viewBox="0 0 100 100"
@@ -287,6 +381,7 @@ const AboutMainAnimation: React.FC = () => {
             </svg>
           </div>
         </div>
+        {/* 鳥 */}
         {[...Array(3)].map((_, i) => {
           const wingFlapL = [
             'animate-wing-flap-l-1',
@@ -337,6 +432,7 @@ const AboutMainAnimation: React.FC = () => {
             </div>
           );
         })}
+        {/* 飛行機 */}
         <div className="base absolute left-[50%] top-[80%] h-[15%] w-[15%] origin-[0_-200%] animate-[rotate_30s_linear_infinite]">
           <div className="airplane h-[100%] w-[100%] -translate-x-1/2">
             <div
