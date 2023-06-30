@@ -382,8 +382,6 @@ const AboutMainAnimation: React.FC = () => {
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
             >
-              {/* くちばし */}
-              <path d="M11,67 L5,70 L11,73 Z" fill="hsl(20 50% 50%)" />
               {/* 本体 */}
               <path
                 d="M17,69 L28,65 L73,65 L73,73 L17,73 Z"
@@ -405,6 +403,17 @@ const AboutMainAnimation: React.FC = () => {
                 d="M85,40 C85,30 98,30 100,40 L97,65 C95,70 90,70 88,65 L85,50"
                 fill="hsl(20 50% 50%)"
               />
+              <path
+                d="M89,49 L89,46 C85,46 85,41 92,40 C99,41 99,46 95,46 L95,49 Z"
+                fill="hsl(20 70% 90%)"
+              />
+              <path
+                d="M91,50 L91,46 M93,50 L93,46"
+                stroke="hsl(20 50% 50%)"
+                strokeWidth="1"
+              />
+              <circle cx="90" cy="43" r="1.5" fill="hsl(20 50% 50%)" />
+              <circle cx="94" cy="43" r="1.5" fill="hsl(20 50% 50%)" />
               {/* 下の出っ張り */}
               <path
                 d="M35,73 L60,73 L60,85 L45,85 C35,85 35,70 35,70 Z"
@@ -488,8 +497,11 @@ const AboutMainAnimation: React.FC = () => {
                   strokeLinecap="round"
                 />
               </g>
+              {/* くちばし */}
+              <path d="M11,67 L5,71 L11,73 Z" fill="hsl(20 50% 50%)" />
               {/* 船首 */}
               <circle cx="15" cy="70" r="5" fill="hsl(20 50% 50%)" />
+              <circle cx="15" cy="69" r="1.5" fill="hsl(20 70% 90%)" />
             </svg>
           </div>
         </div>
