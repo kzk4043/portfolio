@@ -1,5 +1,4 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
 import { Trans, useTranslation, useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
 import AboutMainAnimation from '@/components/aboutMainAnimation';
@@ -16,7 +15,7 @@ const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="flex lg:flex-col-reverse">
-        <div className="mt-14 lg:px-5">
+        <div className="mt-14 max-w-[50%] lg:max-w-full lg:px-5">
           <div>
             <h2 className="font-bold">CAREER</h2>
             <div className="mt-5 flex">
