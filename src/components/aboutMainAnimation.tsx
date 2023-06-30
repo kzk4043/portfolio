@@ -52,7 +52,7 @@ const AnimationBird: React.FC<{
           className="body1 absolute left-[1%] top-[5%] h-[2%] w-[5%]"
           style={{
             backgroundColor: color,
-            opacity: 0.6,
+            opacity: 0.5,
             clipPath: 'polygon(0 0, 100% 0, 60% 100%)',
           }}
         />
@@ -67,7 +67,7 @@ const AnimationBird: React.FC<{
           className={`wing-r ${wingFlapR[wingFlapTiming]} absolute left-[8%] top-[-10%] h-[15%] w-[5%]`}
           style={{
             backgroundColor: color,
-            opacity: 0.6,
+            opacity: 0.5,
             clipPath: 'polygon(0 100%, 30% 0, 100% 100%)',
           }}
         />
@@ -90,6 +90,7 @@ const AboutMainAnimation: React.FC = () => {
                   -Math.random() * 100
                 }s`,
               }}
+              key={i}
             >
               <div
                 className="h-[50%] w-[30%] -translate-x-1/2"
@@ -132,6 +133,7 @@ const AboutMainAnimation: React.FC = () => {
                   -(30 + Math.random() * 70)
                 }s`,
               }}
+              key={i}
             >
               <div
                 className="h-[50%] w-[40%] -translate-x-1/2"
@@ -149,13 +151,13 @@ const AboutMainAnimation: React.FC = () => {
                   <path
                     d="M10,0 L10,70 L50,95 L70,82 L70,95 L80,95 L80,77 L90,70 L90,0 Z M22,42 L22,62 L42,62 L42,42 Z M58,42 L58,62 L78,62 L78,42 Z M42,68 L42,80 L58,80 L58,68 Z"
                     fill={mainColor}
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                   {/* 屋根 */}
                   <path
                     d="M5,65 L50,95 M50,95 L95,65"
                     stroke={`hsl(${30 + Math.random() * 10}, 80%, 45%)`}
-                    stroke-width="7"
+                    strokeWidth="7"
                   />
                   {/* ドア */}
                   <path
@@ -167,19 +169,19 @@ const AboutMainAnimation: React.FC = () => {
                   <path
                     d="M22,42 L22,62 L42,62 L42,42 Z M22,52 L42,52 M32,42 L32,62"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                     fill={mainColor20}
                   />
                   <path
                     d="M58,42 L58,62 L78,62 L78,42 Z M58,52 L78,52 M68,42 L68,62"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                     fill={mainColor20}
                   />
                   <path
                     d="M42,68 L42,80 L58,80 L58,68 Z M42,74 L58,74 M50,68 L50,80"
                     stroke="white"
-                    stroke-width="2"
+                    strokeWidth="2"
                     fill={mainColor20}
                   />
                 </svg>
@@ -198,6 +200,7 @@ const AboutMainAnimation: React.FC = () => {
                   -(30 + Math.random() * 70)
                 }s`,
               }}
+              key={index}
             >
               <div
                 className="h-[65%] w-[40%] -translate-x-1/2"
@@ -216,6 +219,7 @@ const AboutMainAnimation: React.FC = () => {
                           top: `${30 + 13 * i}%`,
                           left: `${5 + 19 * j}%`,
                         }}
+                        key={`${i}_${j}`}
                       />
                     );
                   });
@@ -245,21 +249,21 @@ const AboutMainAnimation: React.FC = () => {
                 fill="hsl(340, 80%, 60%)"
               />
               <path
-                stroke-width="3"
+                strokeWidth="3"
                 d="M28,30 L72,30 M37,50 L63,50"
                 stroke="white"
-                stroke-dasharray="3 2"
+                strokeDasharray="3 2"
               />
               <path
-                stroke-width="3"
+                strokeWidth="3"
                 d="M50,95 L50,100"
                 stroke="hsl(340, 80%, 60%)"
               />
               <path
-                stroke-width="4"
+                strokeWidth="4"
                 d="M46,94 L54,94 M46,90 L54,90 "
                 stroke="hsl(340, 80%, 60%)"
-                stroke-linecap="round"
+                strokeLinecap="round"
               />
               <path d="M30,0 C30,35 70,35 70,0 Z" fill="white" />
             </svg>
@@ -283,7 +287,7 @@ const AboutMainAnimation: React.FC = () => {
           </div>
         </div>
         {/* 車 */}
-        {[...Array(5)].map(() => {
+        {[...Array(5)].map((_, i) => {
           const isReverse = Math.random() > 0.7;
 
           return (
@@ -296,6 +300,7 @@ const AboutMainAnimation: React.FC = () => {
                   Math.random() * 50
                 }s`,
               }}
+              key={i}
             >
               <div
                 className="h-[35%] w-[35%] -translate-x-1/2"
@@ -363,6 +368,7 @@ const AboutMainAnimation: React.FC = () => {
                   Math.random() > 0.75 ? 'reverse' : ''
                 } infinite ${-Math.random() * 50}s`,
               }}
+              key={i}
             />
           );
         })}
@@ -386,8 +392,8 @@ const AboutMainAnimation: React.FC = () => {
               <path
                 d="M30,69 L70,69"
                 stroke="white"
-                stroke-width="3"
-                stroke-dasharray="3 2"
+                strokeWidth="3"
+                strokeDasharray="3 2"
               />
               {/* バルーン */}
               <path
@@ -407,11 +413,7 @@ const AboutMainAnimation: React.FC = () => {
               {/* 羽 */}
               <path d="M20,60 L25,60 L65,70 L50,70 Z" fill="hsl(20 50% 50%)" />
               {/* 後ろのプロペラシャフト */}
-              <path
-                d="M70,67 90,67"
-                stroke="hsl(20 50% 50%)"
-                stroke-width="1"
-              />
+              <path d="M70,67 90,67" stroke="hsl(20 50% 50%)" strokeWidth="1" />
               {/* プロペラ */}
               <g
                 className="origin-[20px_60px]"
@@ -421,8 +423,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="main-r origin-[20px_60px] animate-[rotate_1s_linear_infinite]"
                   d="M8,60 32,60 M20,48 20,72 M11,51 29,69 M29,51 11,69"
                   stroke="hsl(40 90% 60%)"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                 />
               </g>
               <g
@@ -433,8 +435,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="main-l origin-[50px_70px] animate-[rotate_1s_linear_infinite]"
                   d="M38,70 62,70 M50,58 50,82 M41,61 59,79 M59,61 41,79"
                   stroke="hsl(40 90% 60%)"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                 />
               </g>
               {/* 後ろのプロペラ */}
@@ -446,8 +448,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="back-1 origin-[76px_67px] animate-[rotate_1s_linear_infinite]"
                   d="M71,67 81,67 M76,62 76,72 M73,64 79,70 M79,64 73,70"
                   stroke="hsl(40 90% 40%)"
-                  stroke-width="1"
-                  stroke-linecap="round"
+                  strokeWidth="1"
+                  strokeLinecap="round"
                 />
               </g>
               <g
@@ -458,8 +460,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="back-2 origin-[79px_67px] animate-[rotate_1s_linear_infinite]"
                   d="M74,67 84,67 M79,62 79,72 M76,64 82,70 M82,64 76,70"
                   stroke="hsl(40 90% 40%)"
-                  stroke-width="1"
-                  stroke-linecap="round"
+                  strokeWidth="1"
+                  strokeLinecap="round"
                 />
               </g>
               <g
@@ -470,8 +472,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="back-3 origin-[82px_67px] animate-[rotate_1s_linear_infinite]"
                   d="M77,67 87,67 M82,62 82,72 M79,64 85,70 M85,64 79,70"
                   stroke="hsl(40 90% 40%)"
-                  stroke-width="1"
-                  stroke-linecap="round"
+                  strokeWidth="1"
+                  strokeLinecap="round"
                 />
               </g>
               <g
@@ -482,8 +484,8 @@ const AboutMainAnimation: React.FC = () => {
                   className="back-4 origin-[85px_67px] animate-[rotate_1s_linear_infinite]"
                   d="M80,67 90,67 M85,62 85,72 M82,64 88,70 M88,64 82,70"
                   stroke="hsl(40 90% 40%)"
-                  stroke-width="1"
-                  stroke-linecap="round"
+                  strokeWidth="1"
+                  strokeLinecap="round"
                 />
               </g>
               {/* 船首 */}
@@ -500,6 +502,7 @@ const AboutMainAnimation: React.FC = () => {
               delay={i * 0.3}
               wingFlapTiming={i}
               color={`hsl(${Math.random() * 360} 100% 50%)`}
+              key={i}
             />
           );
         })}
@@ -512,6 +515,7 @@ const AboutMainAnimation: React.FC = () => {
               wingFlapTiming={i % 3}
               isReverse={Math.random() > 0.6}
               color={`hsl(${Math.random() * 360} 100% 40%)`}
+              key={i}
             />
           );
         })}
@@ -530,6 +534,7 @@ const AboutMainAnimation: React.FC = () => {
                   <div
                     className="window absolute top-[44%] h-[9%] w-[5%] bg-[#eee]"
                     style={{ left: `${17 + i * 7}%` }}
+                    key={i}
                   />
                 );
               })}

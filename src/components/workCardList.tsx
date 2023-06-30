@@ -34,10 +34,7 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
       <hr />
       <div className="mt-5 flex flex-wrap gap-5">
         {cardList.map(
-          (
-            { title, url, description, technology, image, linkList = [] },
-            index
-          ) => (
+          ({ title, url, description, technology, image, linkList = [] }) => (
             <div key={title} className="relative w-[23%] lg:mb-10 lg:w-full">
               {image && (
                 <GatsbyImage
@@ -57,8 +54,8 @@ const WorkCardList: React.FC<Props> = ({ title, cardList = [] }) => {
               {technology && <p>{technology}</p>}
               {linkList.length > 0 && (
                 <p>
-                  {linkList.map(({ title, url }) => (
-                    <span className="mr-3">
+                  {linkList.map(({ title, url }, index) => (
+                    <span className="mr-3" key={index}>
                       <AppLink type="inline" to={url}>
                         {title}
                       </AppLink>
