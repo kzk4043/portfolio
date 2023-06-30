@@ -28,9 +28,9 @@ const AnimationBird: React.FC<{
 
   return (
     <div
-      className="base absolute h-[15%] w-[15%] origin-[0_-220%]"
+      className="base absolute h-[15%] w-[15%] origin-[0_-230%]"
       style={{
-        top: `${82 + topDiff * 1}%`,
+        top: `${85 + topDiff * 1}%`,
         left: `${50 + leftDiff * 2}%`,
         animation: `rotate ${isReverse ? 100 : 50}s linear ${
           isReverse ? 'reverse' : ''
@@ -499,10 +499,11 @@ const AboutMainAnimation: React.FC = () => {
               leftDiff={i}
               delay={i * 0.3}
               wingFlapTiming={i}
+              color={`hsl(${Math.random() * 360} 100% 50%)`}
             />
           );
         })}
-        {[...Array(5)].map((_, i) => {
+        {[...Array(6)].map((_, i) => {
           return (
             <AnimationBird
               topDiff={Math.random() * 3}
@@ -510,7 +511,7 @@ const AboutMainAnimation: React.FC = () => {
               delay={Math.random() * 20 + i * 3}
               wingFlapTiming={i % 3}
               isReverse={Math.random() > 0.6}
-              color={`hsl(${Math.random() * 360} 100% 35%)`}
+              color={`hsl(${Math.random() * 360} 100% 40%)`}
             />
           );
         })}
