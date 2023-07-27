@@ -22,6 +22,10 @@ const SeoHead: React.FC<Props> = ({ language, title, description }) => {
         property="og:image"
         content={`${process.env.GATSBY_ORIGIN_URL}/images/icon_horse.png`}
       />
+      <meta
+        name="google-site-verification"
+        content="h7X70s1jr_2kieEOWeDhPaXuEO5Yb2LkLTTdPEFM14Q"
+      />
     </>
   );
 };
