@@ -19,7 +19,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 
   return (
     <div>
-      <header>
+      <header className="relative z-10">
         {
           // トップコメント入れて大体1000pxくらいでヘッダがいっぱいなので、そのくらいで切り替えておく
           size[0] > 1000 ? <HeaderPc /> : <HeaderSp />
