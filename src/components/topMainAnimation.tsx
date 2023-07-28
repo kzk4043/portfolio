@@ -8,7 +8,7 @@ import AppLink from './appLink';
  */
 const TopMainAnimation: React.FC = () => {
   return (
-    <div className="pointer-events-none absolute left-0 top-0 z-[-1] flex h-full w-full items-center justify-center overflow-hidden">
+    <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full items-center justify-center overflow-hidden">
       <div className="summerdream relative">
         <div className="sea absolute left-[-300px] top-[-300px]">
           <div className="surface absolute h-[600px] w-[600px] animate-top-surface overflow-hidden bg-top-animation-water" />
@@ -119,7 +119,7 @@ const TopMainAnimation: React.FC = () => {
           </div>
         </div>
       </div>
-      <p className="absolute bottom-2 mx-auto w-full max-w-7xl px-0 text-right text-sm lg:px-3">
+      <p className="pointer-events-auto absolute bottom-2 mx-auto w-full max-w-7xl px-0 text-right text-sm lg:px-3">
         copied from{' '}
         <AppLink to="https://codepen.io/YusukeNakaya/pen/mdVZLmY">
           Codepen
