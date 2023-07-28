@@ -127,7 +127,7 @@ const AboutPage: React.FC<PageProps> = () => {
             </div>
           </div>
         </div>
-        <div className="grow">
+        <div className="grow overflow-hidden">
           <AboutMainAnimation />
         </div>
       </div>

@@ -375,7 +375,7 @@ const AboutMainAnimation: React.FC = () => {
       </div>
       <div className="air">
         {/* タイガーモス号 */}
-        <div className="base absolute left-[50%] top-[-5%] h-[15%] w-[15%] origin-[0_350%] animate-[rotate_70s_linear_reverse_infinite]">
+        <div className="base absolute left-[50%] top-[0%] h-[15%] w-[15%] origin-[0_330%] animate-[rotate_70s_linear_reverse_infinite]">
           <div className="laputa h-[80%] w-[80%] -translate-x-1/2">
             <svg
               className="box h-full w-full"
