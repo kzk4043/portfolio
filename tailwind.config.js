@@ -141,7 +141,7 @@ module.exports = {
           'wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate .2s',
         'fade-out': 'fade-out 1s cubic-bezier(.1,.48,.81,.73) forwards 1.5s',
         'fade-out-short':
-          'fade-out .3s cubic-bezier(.1,.48,.81,.73) forwards .1s',
+          'fade-out .3s cubic-bezier(.1,.48,.81,.73) forwards .3s',
       },
     },
   },
