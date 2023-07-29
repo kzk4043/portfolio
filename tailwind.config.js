@@ -103,6 +103,10 @@ module.exports = {
           '0%': { clipPath: 'polygon(0 100%, 30% 100%, 100% 100%)' },
           '100%': { clipPath: 'polygon(0 100%, 30% 0, 100% 100%)' },
         },
+        'fade-out': {
+          '0%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        },
       },
       animation: {
         typing:
@@ -135,6 +139,9 @@ module.exports = {
           'wing-flap-r .6s cubic-bezier(.1,.48,.81,.73) infinite alternate .5s',
         'wing-flap-r-3':
           'wing-flap-r .7s cubic-bezier(.1,.48,.81,.73) infinite alternate .2s',
+        'fade-out': 'fade-out 1s cubic-bezier(.1,.48,.81,.73) forwards 1.5s',
+        'fade-out-short':
+          'fade-out .3s cubic-bezier(.1,.48,.81,.73) forwards .1s',
       },
     },
   },
