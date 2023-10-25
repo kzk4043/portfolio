@@ -93,13 +93,13 @@ const AboutPage: React.FC<PageProps> = () => {
                   <Trans>AWSクラウドプラクティショナー</Trans>
                 </li>
                 <li>
-                  <Trans>FP3級/簿記3級</Trans>
+                  <Trans>FP2級/簿記3級</Trans>
                 </li>
                 <li>
                   <Trans>TOEIC 895点</Trans>
                 </li>
                 <li>
-                  <Trans>RYT200</Trans>
+                  <Trans>RYT200/アロマテラピー検定1級</Trans>
                 </li>
                 <li>
                   <Trans>アロマテラピー検定1級</Trans>

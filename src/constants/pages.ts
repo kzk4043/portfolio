@@ -19,7 +19,7 @@ export const PAGE_URL = {
 /** サイト外のURL */
 export const EXTERNAL_PAGE_URL = {
   /** Zenn */
-  PORTFOLIO: 'https://portfolio35892.gatsbyjs.io',
+  PORTFOLIO: 'https://kzk4043-portfolio.netlify.app',
   /** Zenn */
   ZENN: 'https://zenn.dev/soma3134',
   /** Github */
