@@ -101,9 +101,6 @@ const AboutPage: React.FC<PageProps> = () => {
                 <li>
                   <Trans>RYT200/アロマテラピー検定1級</Trans>
                 </li>
-                <li>
-                  <Trans>アロマテラピー検定1級</Trans>
-                </li>
               </ul>
             </div>
           </div>
