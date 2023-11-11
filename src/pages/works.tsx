@@ -22,6 +22,19 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
         },
       ],
     },
+    {
+      title: t('ナレッジまとめサイト（作成中）'),
+      url: EXTERNAL_PAGE_URL.KNOWLEDGE_BASE,
+      description: t('自分用にナレッジをまとめていきます。'),
+      technology: 'Astro.js/TypeScript/Tailwind CSS',
+      image: data.horse?.childImageSharp?.gatsbyImageData,
+      linkList: [
+        {
+          title: 'github',
+          url: 'https://github.com/kzk4043/knowledge-doc',
+        },
+      ],
+    },
   ];
   const snsCardList = [
     {

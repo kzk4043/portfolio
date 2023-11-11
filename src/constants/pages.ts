@@ -18,8 +18,10 @@ export const PAGE_URL = {
 
 /** サイト外のURL */
 export const EXTERNAL_PAGE_URL = {
-  /** Zenn */
+  /** ポートフォリオ */
   PORTFOLIO: 'https://kzk4043-portfolio.netlify.app',
+  /** knowledge base */
+  KNOWLEDGE_BASE: 'https://kzk4043-knowledge-base.netlify.app',
   /** Zenn */
   ZENN: 'https://zenn.dev/soma3134',
   /** Github */
