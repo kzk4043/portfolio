@@ -1,4 +1,4 @@
-[~~公開中~~](https://portfolio35892.gatsbyjs.io) → [netlifyに移行](https://main--genuine-cendol-d60cc9.netlify.app)
+[~~公開中~~](https://portfolio35892.gatsbyjs.io) → [netlifyに移行](https://kzk4043-portfolio.netlify.app)
 
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
