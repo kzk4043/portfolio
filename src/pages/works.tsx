@@ -41,7 +41,7 @@ const WorksPage: React.FC<PageProps<Queries.WorksPageQuery>> = ({ data }) => {
       title: 'Zenn',
       url: EXTERNAL_PAGE_URL.ZENN,
       description: t(
-        '不定期で技術記事を書いています。主にフロントエンドについて書いています。'
+        '不定期で技術記事を書いています。主にScrapを使用しています。'
       ),
       image: data.zenn?.childImageSharp?.gatsbyImageData,
     },
