@@ -15,8 +15,7 @@
   },
   "editor.formatOnSave": true, // ファイル保存時にデフォルトフォーマッターでファイルをフォーマットする
   "editor.codeActionsOnSave": {
-    // ファイル保存時のコードアクション設定
-    "source.fixAll.eslint": true, // ESLint プラグインでフォーマットする
-    "source.fixAll.stylelint": true // Stylelint プラグインでフォーマットする
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   }
 }
