@@ -60,6 +60,9 @@ const AboutPage: React.FC<PageProps> = () => {
                 <li>
                   <Trans>2023年</Trans>
                 </li>
+                <li>
+                  <Trans>2025年</Trans>
+                </li>
               </ul>
               <ul className="ml-8">
                 <li>
@@ -73,6 +76,9 @@ const AboutPage: React.FC<PageProps> = () => {
                 </li>
                 <li>
                   <Trans>1年間の育休を取得</Trans>
+                </li>
+                <li>
+                  <Trans>株式会社DeltaX 中途入社</Trans>
                 </li>
                 {language === 'ja' && (
                   <li className="mt-5">
