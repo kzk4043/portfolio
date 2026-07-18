@@ -1,19 +1,31 @@
 import emailjs from '@emailjs/browser';
 import { clsx } from 'clsx';
 import { graphql, Script, type HeadFC, type PageProps } from 'gatsby';
-import { Trans } from 'gatsby-plugin-react-i18next';
+import { Trans, useTranslation } from 'gatsby-plugin-react-i18next';
 import React from 'react';
 import SeoHead from '@/components/head';
 import Layout from '@/components/layout';
 import { PAGE_TITLE, PAGE_URL } from '@/constants/pages';
 
+/** 必須項目が未入力のときのメッセージ（フィールド名ごと） */
+const REQUIRED_MESSAGES: Record<string, string> = {
+  user_name: 'お名前を入力してください。',
+  user_email: 'メールアドレスを入力してください。',
+  message: 'メッセージを入力してください。',
+};
+
+type FormField = HTMLInputElement | HTMLTextAreaElement;
+
 const ContactPage: React.FC<PageProps> = () => {
+  const { t } = useTranslation();
   const form = React.useRef<HTMLFormElement>(null);
   const [emailStatus, setEmailStatus] = React.useState<
     'typing' | 'ready' | 'sending' | 'sent' | 'error'
   >('typing');
   const [isRecaptchaSuccessful, setIsRecaptchaSuccessful] =
     React.useState(false);
+  // フィールドごとのエラーメッセージ（''＝エラーなし、キー未設定＝未検証）
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
   const isBrowser = typeof window !== 'undefined';
 
   /**
@@ -43,6 +55,7 @@ const ContactPage: React.FC<PageProps> = () => {
 
       // フォームの内容をリセット（なぜかリキャストしないとエラーになる）
       (event.target as HTMLFormElement).reset();
+      setErrors({});
       // reCAPTCHAのリセット
       isBrowser && window.grecaptcha?.reset();
       setEmailStatus('typing');
@@ -64,6 +77,26 @@ const ContactPage: React.FC<PageProps> = () => {
     if (!form.current) return false;
 
     return form.current.checkValidity();
+  };
+
+  /** フィールド単体のエラーメッセージを返す（''＝エラーなし） */
+  const getFieldError = (el: FormField): string => {
+    if (el.validity.valueMissing) return REQUIRED_MESSAGES[el.name] ?? '';
+    if (el.validity.typeMismatch) return '正しいメールアドレスを入力してください。';
+
+    return '';
+  };
+
+  /** フォーカスアウト時に該当フィールドを検証 */
+  const validateOnBlur = (e: React.FocusEvent<FormField>) => {
+    const el = e.target;
+    setErrors((prev) => ({ ...prev, [el.name]: getFieldError(el) }));
+  };
+
+  /** 一度検証済みのフィールドは入力中も再検証してライブでエラーを更新 */
+  const revalidateIfTouched = (el: FormField) => {
+    if (errors[el.name] === undefined) return;
+    setErrors((prev) => ({ ...prev, [el.name]: getFieldError(el) }));
   };
 
   /** フォームのバリデーション更新 */
@@ -110,10 +143,23 @@ const ContactPage: React.FC<PageProps> = () => {
               id="user_name"
               type="text"
               name="user_name"
-              className="border bg-white p-1"
+              className={clsx('border bg-white p-1', {
+                'border-no': errors.user_name,
+              })}
               required
-              onChange={updateFormValidationStatus}
+              aria-invalid={!!errors.user_name}
+              aria-describedby="user_name_error"
+              onChange={(e) => {
+                updateFormValidationStatus();
+                revalidateIfTouched(e.target);
+              }}
+              onBlur={validateOnBlur}
             />
+            {errors.user_name && (
+              <p id="user_name_error" className="mt-1 text-sm text-no">
+                {t(errors.user_name)}
+              </p>
+            )}
             <label htmlFor="user_email" className="mt-5">
               Email
             </label>
@@ -121,26 +167,50 @@ const ContactPage: React.FC<PageProps> = () => {
               id="user_email"
               type="email"
               name="user_email"
-              className="border bg-white p-1"
+              className={clsx('border bg-white p-1', {
+                'border-no': errors.user_email,
+              })}
               required
-              onChange={updateFormValidationStatus}
+              aria-invalid={!!errors.user_email}
+              aria-describedby="user_email_error"
+              onChange={(e) => {
+                updateFormValidationStatus();
+                revalidateIfTouched(e.target);
+              }}
+              onBlur={validateOnBlur}
             />
+            {errors.user_email && (
+              <p id="user_email_error" className="mt-1 text-sm text-no">
+                {t(errors.user_email)}
+              </p>
+            )}
             <label htmlFor="message" className="mt-5">
               Message
             </label>
             <textarea
               id="message"
               name="message"
-              className="overflow-visible border bg-white p-1"
+              className={clsx('overflow-visible border bg-white p-1', {
+                'border-no': errors.message,
+              })}
               required
+              aria-invalid={!!errors.message}
+              aria-describedby="message_error"
               onChange={(e) => {
                 updateFormValidationStatus();
+                revalidateIfTouched(e.target);
                 // これ入れないとサイズが変わったあとに内容を削除したときなど動きがおかしい
                 e.target.style.height = 'auto';
                 // 改行に合わせて高さを変える
                 e.target.style.height = e.target.scrollHeight + 'px';
               }}
+              onBlur={validateOnBlur}
             />
+            {errors.message && (
+              <p id="message_error" className="mt-1 text-sm text-no">
+                {t(errors.message)}
+              </p>
+            )}
             <div
               className="g-recaptcha mx-auto mt-5"
               data-sitekey={process.env.GATSBY_RECAPTCHA_SITE_KEY}

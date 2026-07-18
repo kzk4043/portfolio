@@ -3,5 +3,9 @@
   "メールを送信しました。": "Email sent.",
   "返信まで今しばらくお待ちください。": "Please wait a moment for my reply.",
   "送信に失敗しました。": "Failed to send email.",
-  "お手数ですが再度送信お願い致します。": "Please send it again."
+  "お手数ですが再度送信お願い致します。": "Please send it again.",
+  "お名前を入力してください。": "Please enter your name.",
+  "メールアドレスを入力してください。": "Please enter your email address.",
+  "正しいメールアドレスを入力してください。": "Please enter a valid email address.",
+  "メッセージを入力してください。": "Please enter a message."
 }
