@@ -1,5 +1,14 @@
 [~~公開中~~](https://portfolio35892.gatsbyjs.io) → [netlifyに移行](https://kzk4043-portfolio.netlify.app)
 
+## お問い合わせフォームについて
+
+contact ページ（`src/pages/contact.tsx`）は [EmailJS](https://www.emailjs.com/) の Gmail 連携で送信している。
+Google の OAuth refresh token は **「6ヶ月間 未使用」で自動失効する**ため、放置すると contact が使えなくなる。
+これを防ぐため、private リポジトリ [kzk4043/keep-alive-actions](https://github.com/kzk4043/keep-alive-actions) が
+**月1回ダミー送信して token を生かし続けている**。
+
+contact が使えなくなった場合は、まず EmailJS ダッシュボードで Gmail 連携が切れていないか（要 Reconnect）を確認する。
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />

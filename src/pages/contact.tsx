@@ -42,6 +42,12 @@ const ContactPage: React.FC<PageProps> = () => {
     try {
       setEmailStatus('sending');
 
+      // NOTE: 送信は EmailJS の Gmail 連携（Personal Service）経由。
+      // Google の OAuth refresh token は「6ヶ月間 未使用」で失効するため
+      // (https://developers.google.com/identity/protocols/oauth2#expiration)、
+      // 別リポジトリ kzk4043/keep-alive-actions が月1でダミー送信して token を生かしている。
+      // 「たまに contact が使えなくなる」場合はまず EmailJS ダッシュボードで
+      // Gmail 連携が切れていないか（要 Reconnect）を確認する。
       await emailjs.sendForm(
         process.env.GATSBY_EMAILJS_SERVICE_ID || '',
         process.env.GATSBY_EMAILJS_TEMPLATE_ID || '',
